@@ -121,7 +121,7 @@
             }
         }
 
-        /* Menu hamburger pour mobile (propre) */
+        /* Menu hamburger */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -174,12 +174,6 @@
             font-size: 0.9rem;
         }
 
-        @media (min-width: 768px) {
-            .nav-links a {
-                font-size: 0.95rem;
-            }
-        }
-
         .nav-links a:hover {
             color: #e07a15;
         }
@@ -193,18 +187,11 @@
             transition: all 0.25s;
         }
 
-        @media (min-width: 768px) {
-            .nav-btn {
-                padding: 8px 28px;
-            }
-        }
-
         .nav-btn:hover {
             background: #c05f0c;
             transform: translateY(-2px);
         }
 
-        /* Responsive mobile navbar */
         @media (max-width: 767px) {
             .menu-toggle {
                 display: flex;
@@ -244,7 +231,7 @@
             }
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -288,15 +275,6 @@
             font-weight: 700;
             color: #e07a15;
             margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        @media (min-width: 768px) {
-            .hero-tag {
-                font-size: 0.75rem;
-                padding: 6px 20px;
-                margin-bottom: 28px;
-            }
         }
 
         .hero-content h1 {
@@ -330,14 +308,6 @@
             margin-bottom: 28px;
         }
 
-        @media (min-width: 768px) {
-            .hero-desc {
-                font-size: 1.1rem;
-                max-width: 90%;
-                margin-bottom: 36px;
-            }
-        }
-
         .btn-primary {
             background: #e07a15;
             border: none;
@@ -350,16 +320,7 @@
             transition: all 0.3s;
             display: inline-block;
             font-family: 'Space Grotesk', sans-serif;
-            width: 100%;
             max-width: 280px;
-        }
-
-        @media (min-width: 768px) {
-            .btn-primary {
-                padding: 14px 40px;
-                font-size: 0.95rem;
-                width: auto;
-            }
         }
 
         .btn-primary:hover {
@@ -375,23 +336,10 @@
             flex-wrap: wrap;
         }
 
-        @media (min-width: 768px) {
-            .hero-stats {
-                gap: 48px;
-                margin-top: 52px;
-            }
-        }
-
         .stat-item .stat-number {
             font-size: 1.5rem;
             font-weight: 700;
             color: #0a1a2f;
-        }
-
-        @media (min-width: 768px) {
-            .stat-item .stat-number {
-                font-size: 1.8rem;
-            }
         }
 
         .stat-item .stat-label {
@@ -400,24 +348,12 @@
             font-weight: 500;
         }
 
-        @media (min-width: 768px) {
-            .stat-item .stat-label {
-                font-size: 0.8rem;
-            }
-        }
-
         .hero-visual {
             flex: 1;
             position: relative;
             min-height: 320px;
             width: 100%;
             animation: slideInRight 0.8s ease forwards;
-        }
-
-        @media (min-width: 768px) {
-            .hero-visual {
-                min-height: 420px;
-            }
         }
 
         .card-float {
@@ -430,13 +366,6 @@
             animation: float1 5s ease-in-out infinite;
         }
 
-        @media (min-width: 768px) {
-            .card-float {
-                padding: 28px;
-                width: 270px;
-            }
-        }
-
         .card-float-inner {
             background: linear-gradient(145deg, #fcfcfc, #f5f5f5);
             border-radius: 20px;
@@ -445,25 +374,10 @@
             border: 1px solid rgba(224, 122, 21, 0.15);
         }
 
-        @media (min-width: 768px) {
-            .card-float-inner {
-                border-radius: 24px;
-                padding: 28px 20px;
-            }
-        }
-
         .card-float-inner h4 {
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #0a1a2f;
-        }
-
-        @media (min-width: 768px) {
-            .card-float-inner h4 {
-                font-size: 1.3rem;
-                margin-bottom: 10px;
-            }
         }
 
         .card-float-inner .line {
@@ -472,24 +386,6 @@
             background: #e07a15;
             margin: 12px auto;
             border-radius: 2px;
-        }
-
-        @media (min-width: 768px) {
-            .card-float-inner .line {
-                width: 50px;
-                margin: 16px auto 12px;
-            }
-        }
-
-        .card-float-inner p {
-            font-size: 0.65rem;
-            color: #5a6e7c;
-        }
-
-        @media (min-width: 768px) {
-            .card-float-inner p {
-                font-size: 0.7rem;
-            }
         }
 
         .card-float-2 {
@@ -505,25 +401,9 @@
             animation: float2 4.8s ease-in-out infinite;
         }
 
-        @media (min-width: 768px) {
-            .card-float-2 {
-                bottom: -10px;
-                right: 20px;
-                width: 210px;
-                padding: 20px;
-                border-radius: 28px;
-            }
-        }
-
         /* Sections */
         .section {
             padding: 60px 0;
-        }
-
-        @media (min-width: 768px) {
-            .section {
-                padding: 100px 0;
-            }
         }
 
         .section-title {
@@ -532,14 +412,6 @@
             font-weight: 700;
             margin-bottom: 12px;
             color: #0a1a2f;
-            letter-spacing: -0.01em;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.6rem;
-                margin-bottom: 16px;
-            }
         }
 
         .section-sub {
@@ -548,14 +420,6 @@
             max-width: 680px;
             margin: 0 auto 40px;
             font-size: 0.9rem;
-            padding: 0 16px;
-        }
-
-        @media (min-width: 768px) {
-            .section-sub {
-                margin: 0 auto 56px;
-                font-size: 1rem;
-            }
         }
 
         .services-grid {
@@ -589,13 +453,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        @media (min-width: 768px) {
-            .service-card {
-                padding: 40px 28px;
-                border-radius: 32px;
-            }
-        }
-
         .service-card.visible {
             animation: fadeUp 0.6s ease forwards;
         }
@@ -603,7 +460,6 @@
         .service-card:hover {
             transform: translateY(-8px);
             border-color: #e07a15;
-            box-shadow: 0 25px 35px -16px rgba(0, 0, 0, 0.12);
         }
 
         .service-number {
@@ -614,53 +470,17 @@
             margin-bottom: 16px;
         }
 
-        @media (min-width: 768px) {
-            .service-number {
-                font-size: 2.2rem;
-                margin-bottom: 20px;
-            }
-        }
-
         .service-card h3 {
             font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 12px;
-            color: #0a1a2f;
         }
 
-        @media (min-width: 768px) {
-            .service-card h3 {
-                font-size: 1.4rem;
-                margin-bottom: 14px;
-            }
-        }
-
-        .service-card p {
-            color: #4b5f6e;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        @media (min-width: 768px) {
-            .service-card p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Réalisations */
         .realisations-section {
             background: #f7f7f7;
             border-radius: 32px;
             margin: 20px 0;
             padding: 40px 0;
-        }
-
-        @media (min-width: 768px) {
-            .realisations-section {
-                border-radius: 56px;
-                margin: 40px 0;
-                padding: 60px 0;
-            }
         }
 
         .realisations-grid {
@@ -682,7 +502,6 @@
             .realisations-grid {
                 grid-template-columns: repeat(5, 1fr);
                 gap: 24px;
-                margin-top: 48px;
             }
         }
 
@@ -696,17 +515,9 @@
             box-shadow: var(--shadow-sm);
         }
 
-        @media (min-width: 768px) {
-            .realisation-item {
-                border-radius: 28px;
-                padding: 32px 20px;
-            }
-        }
-
         .realisation-item:hover {
             transform: translateY(-6px);
             border-color: #e07a15;
-            box-shadow: var(--shadow-md);
         }
 
         .realisation-category {
@@ -718,36 +529,16 @@
             margin-bottom: 10px;
         }
 
-        @media (min-width: 768px) {
-            .realisation-category {
-                font-size: 0.7rem;
-                margin-bottom: 12px;
-            }
-        }
-
         .realisation-item h4 {
             font-size: 0.95rem;
             font-weight: 700;
-            color: #0a1a2f;
             margin-bottom: 6px;
-        }
-
-        @media (min-width: 768px) {
-            .realisation-item h4 {
-                font-size: 1.1rem;
-                margin-bottom: 8px;
-            }
+            color: #0a1a2f;
         }
 
         .realisation-item p {
             font-size: 0.7rem;
             color: #5a6e7c;
-        }
-
-        @media (min-width: 768px) {
-            .realisation-item p {
-                font-size: 0.8rem;
-            }
         }
 
         .realisation-divider {
@@ -758,13 +549,6 @@
             opacity: 0.5;
         }
 
-        @media (min-width: 768px) {
-            .realisation-divider {
-                width: 40px;
-                margin: 16px auto 0;
-            }
-        }
-
         /* CTA */
         .cta-section {
             background: #0a1a2f;
@@ -773,23 +557,10 @@
             overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-            .cta-section {
-                border-radius: 56px;
-                margin: 40px 0 90px;
-            }
-        }
-
         .cta-inner {
             padding: 48px 24px;
             text-align: center;
             background: linear-gradient(135deg, #071225 0%, #10223b 100%);
-        }
-
-        @media (min-width: 768px) {
-            .cta-inner {
-                padding: 72px 60px;
-            }
         }
 
         .cta-line {
@@ -797,14 +568,6 @@
             height: 3px;
             background: #e07a15;
             margin: 0 auto 20px;
-            border-radius: 3px;
-        }
-
-        @media (min-width: 768px) {
-            .cta-line {
-                width: 70px;
-                margin: 0 auto 28px;
-            }
         }
 
         .cta-inner h2 {
@@ -812,29 +575,12 @@
             font-weight: 700;
             color: white;
             margin-bottom: 16px;
-            padding: 0 16px;
-        }
-
-        @media (min-width: 768px) {
-            .cta-inner h2 {
-                font-size: 2.3rem;
-                margin-bottom: 18px;
-            }
         }
 
         .cta-inner p {
             color: #cbd5e1;
             max-width: 520px;
             margin: 0 auto 28px;
-            font-size: 0.9rem;
-            padding: 0 16px;
-        }
-
-        @media (min-width: 768px) {
-            .cta-inner p {
-                margin: 0 auto 36px;
-                font-size: 1rem;
-            }
         }
 
         .btn-cta {
@@ -843,26 +589,14 @@
             padding: 14px 36px;
             border-radius: 48px;
             font-weight: 600;
-            font-size: 0.9rem;
             border: none;
             cursor: pointer;
             transition: all 0.25s;
             font-family: 'Space Grotesk', sans-serif;
-            width: 90%;
-            max-width: 280px;
-        }
-
-        @media (min-width: 768px) {
-            .btn-cta {
-                padding: 16px 48px;
-                font-size: 1rem;
-                width: auto;
-            }
         }
 
         .btn-cta:hover {
             background: #c05f0c;
-            transform: scale(1.02);
         }
 
         /* Footer */
@@ -870,12 +604,6 @@
             background: var(--white);
             border-top: 1px solid rgba(10, 26, 47, 0.1);
             padding: 40px 0 32px;
-        }
-
-        @media (min-width: 768px) {
-            footer {
-                padding: 56px 0 40px;
-            }
         }
 
         .footer-content {
@@ -886,41 +614,10 @@
             margin-bottom: 32px;
         }
 
-        @media (min-width: 768px) {
-            .footer-content {
-                gap: 48px;
-                margin-bottom: 48px;
-            }
-        }
-
-        .footer-brand .footer-logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0a1a2f 0%, #e07a15 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-brand .footer-logo {
-                font-size: 1.5rem;
-                margin-bottom: 16px;
-            }
-        }
-
         .footer-brand p {
             color: #5a6e7c;
             font-size: 0.8rem;
             max-width: 260px;
-            line-height: 1.5;
-        }
-
-        @media (min-width: 768px) {
-            .footer-brand p {
-                font-size: 0.85rem;
-            }
         }
 
         .footer-links-column {
@@ -929,26 +626,12 @@
             flex-wrap: wrap;
         }
 
-        @media (min-width: 768px) {
-            .footer-links-column {
-                gap: 64px;
-            }
-        }
-
         .footer-col h4 {
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #0a1a2f;
             margin-bottom: 16px;
-        }
-
-        @media (min-width: 768px) {
-            .footer-col h4 {
-                font-size: 0.85rem;
-                margin-bottom: 20px;
-            }
         }
 
         .footer-col a, .footer-col p {
@@ -958,13 +641,6 @@
             font-size: 0.8rem;
             margin-bottom: 10px;
             transition: color 0.2s;
-        }
-
-        @media (min-width: 768px) {
-            .footer-col a, .footer-col p {
-                font-size: 0.85rem;
-                margin-bottom: 12px;
-            }
         }
 
         .footer-col a:hover {
@@ -979,15 +655,8 @@
             font-size: 0.7rem;
         }
 
-        @media (min-width: 768px) {
-            .footer-bottom {
-                padding-top: 32px;
-                font-size: 0.75rem;
-            }
-        }
-
-        /* Modal */
-        .modal {
+        /* Modals (Devis + Admin) */
+        .modal, .admin-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -1002,10 +671,10 @@
             padding: 16px;
         }
 
-        .modal-content {
+        .modal-content, .admin-modal-content {
             background: var(--white);
             border-radius: 32px;
-            max-width: 520px;
+            max-width: 800px;
             width: 100%;
             padding: 32px 24px;
             position: relative;
@@ -1013,13 +682,6 @@
             border-top: 4px solid #e07a15;
             max-height: 90vh;
             overflow-y: auto;
-        }
-
-        @media (min-width: 768px) {
-            .modal-content {
-                border-radius: 44px;
-                padding: 44px;
-            }
         }
 
         .modal-close {
@@ -1030,61 +692,17 @@
             cursor: pointer;
             color: #aaa;
             transition: 0.2s;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        @media (min-width: 768px) {
-            .modal-close {
-                right: 28px;
-                top: 24px;
-                font-size: 2rem;
-            }
         }
 
         .modal-close:hover {
             color: #e07a15;
         }
 
-        .modal-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #0a1a2f;
-        }
-
-        @media (min-width: 768px) {
-            .modal-content h3 {
-                font-size: 1.8rem;
-            }
-        }
-
-        .modal-content .sub {
-            color: #5a6e7c;
-            margin-bottom: 24px;
-            font-size: 0.8rem;
-        }
-
-        @media (min-width: 768px) {
-            .modal-content .sub {
-                margin-bottom: 32px;
-                font-size: 0.85rem;
-            }
-        }
-
         .form-group {
             margin-bottom: 18px;
         }
 
-        @media (min-width: 768px) {
-            .form-group {
-                margin-bottom: 22px;
-            }
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px 16px;
             border-radius: 28px;
@@ -1092,40 +710,11 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 0.85rem;
             background: #fafafa;
-            transition: all 0.2s;
-            -webkit-appearance: none;
         }
 
-        @media (min-width: 768px) {
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 14px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: #e07a15;
-            background: white;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: #0a1a2f;
-            font-size: 0.8rem;
-        }
-
-        @media (min-width: 768px) {
-            .form-group label {
-                margin-bottom: 8px;
-                font-size: 0.85rem;
-            }
         }
 
         .modal-btn {
@@ -1136,26 +725,10 @@
             width: 100%;
             border-radius: 40px;
             font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
-            transition: 0.2s;
-            margin-top: 8px;
             font-family: 'Space Grotesk', sans-serif;
         }
 
-        @media (min-width: 768px) {
-            .modal-btn {
-                padding: 15px;
-                font-size: 0.95rem;
-                margin-top: 10px;
-            }
-        }
-
-        .modal-btn:hover {
-            background: #c05f0c;
-        }
-
-        /* Bouton flottant WhatsApp */
         .whatsapp-float {
             position: fixed;
             bottom: 24px;
@@ -1176,14 +749,9 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-            70% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
-            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20b859;
+            0% { transform: scale(1); }
+            70% { transform: scale(1.08); }
+            100% { transform: scale(1); }
         }
 
         .whatsapp-float svg {
@@ -1192,24 +760,75 @@
             fill: white;
         }
 
-        @media (min-width: 768px) {
-            .whatsapp-float {
-                width: 70px;
-                height: 70px;
-                bottom: 30px;
-                right: 30px;
-            }
-            .whatsapp-float svg {
-                width: 40px;
-                height: 40px;
-            }
+        /* Admin panel rows */
+        .admin-realisation-row {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e2e2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-end;
         }
-
-        button, .nav-btn, .btn-cta, .modal-btn {
+        .admin-realisation-row input, .admin-realisation-row textarea {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px 12px;
+            border-radius: 28px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+        }
+        .admin-realisation-row .row-remove {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
             cursor: pointer;
-            touch-action: manipulation;
+            font-weight: 600;
         }
-
+        .admin-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+        .btn-admin-save {
+            background: #e07a15;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-admin-cancel {
+            background: #6c757d;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-add-realisation {
+            background: #0a1a2f;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            border: none;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .admin-subtitle {
+            font-size: 0.8rem;
+            color: #5a6e7c;
+            margin-bottom: 20px;
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -1234,9 +853,8 @@
     </div>
 </nav>
 
-<!-- Bouton flottant WhatsApp avec numéro corrigé -->
 <a href="https://wa.me/21620961180?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20des%20cr%C3%A9ations%20print%20(flyers%2C%20cartes%20de%20visite...)" 
-   class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsappBtn">
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.248 2.544 11.456c-.002 1.675.438 3.313 1.276 4.75L2 22l5.886-1.545c1.389.756 2.963 1.156 4.57 1.156h.004c5.204 0 9.456-4.25 9.46-9.458.002-2.523-.98-4.894-2.759-6.673zM12.01 19.916h-.003c-1.43 0-2.83-.383-4.041-1.106l-.29-.173-3.492.915.932-3.398-.188-.3a8.122 8.122 0 0 1-1.182-4.35c.004-4.48 3.648-8.122 8.132-8.122 2.17.002 4.208.846 5.742 2.38a8.08 8.08 0 0 1 2.379 5.756c-.004 4.484-3.648 8.128-8.129 8.128zm4.457-6.086c-.245-.123-1.449-.715-1.674-.796-.224-.082-.387-.123-.55.123-.164.246-.635.796-.778.96-.143.164-.286.184-.531.062-.245-.123-1.035-.382-1.97-1.216-.728-.65-1.219-1.452-1.362-1.697-.143-.245-.015-.378.107-.5.11-.11.245-.287.368-.43.122-.144.163-.246.245-.41.082-.164.041-.307-.02-.43-.062-.123-.55-1.322-.753-1.81-.198-.474-.4-.41-.55-.418-.143-.008-.306-.01-.47-.01-.163 0-.428.06-.652.306-.224.246-.857.838-.857 2.043 0 1.205.877 2.37 1 2.534.123.164 1.727 2.638 4.185 3.698.585.252 1.042.402 1.398.515.587.187 1.12.16 1.543.097.47-.07 1.449-.592 1.653-1.163.204-.57.204-1.058.143-1.16-.06-.102-.224-.164-.47-.287z"/>
     </svg>
@@ -1251,35 +869,14 @@
                 <p class="hero-desc">Agence créative basée en Tunisie, nous concevons des supports graphiques percutants : flyers, cartes de visite, brochures. Un mélange d'audace et d'élégance pour votre marque.</p>
                 <button class="btn-primary" id="exploreBtn">Découvrir nos prestations</button>
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">120+</div>
-                        <div class="stat-label">Projets livrés</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">96%</div>
-                        <div class="stat-label">Clients satisfaits</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24h</div>
-                        <div class="stat-label">Réponse devis</div>
-                    </div>
+                    <div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Projets livrés</div></div>
+                    <div class="stat-item"><div class="stat-number">96%</div><div class="stat-label">Clients satisfaits</div></div>
+                    <div class="stat-item"><div class="stat-number">24h</div><div class="stat-label">Réponse devis</div></div>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="card-float">
-                    <div class="card-float-inner">
-                        <h4>Carte de visite</h4>
-                        <div class="line"></div>
-                        <p>finition mate · touches cuivrées</p>
-                    </div>
-                </div>
-                <div class="card-float-2">
-                    <div class="card-float-inner" style="padding: 16px;">
-                        <h4>Flyer A5</h4>
-                        <div class="line"></div>
-                        <p>design signature</p>
-                    </div>
-                </div>
+                <div class="card-float"><div class="card-float-inner"><h4>Carte de visite</h4><div class="line"></div><p>finition mate · touches cuivrées</p></div></div>
+                <div class="card-float-2"><div class="card-float-inner" style="padding: 16px;"><h4>Flyer A5</h4><div class="line"></div><p>design signature</p></div></div>
             </div>
         </div>
     </section>
@@ -1289,26 +886,10 @@
             <h2 class="section-title">Notre savoir-faire</h2>
             <p class="section-sub">Des prestations print haut de gamme pour une identité visuelle forte et professionnelle.</p>
             <div class="services-grid">
-                <div class="service-card" data-delay="0">
-                    <div class="service-number">01</div>
-                    <h3>Cartes de visite</h3>
-                    <p>Design moderne, papier luxe, finitions sélectives. Une carte qui laisse une empreinte durable.</p>
-                </div>
-                <div class="service-card" data-delay="1">
-                    <div class="service-number">02</div>
-                    <h3>Flyers & dépliants</h3>
-                    <p>Formats A6, A5, carré. Créations percutantes pour vos événements et promotions.</p>
-                </div>
-                <div class="service-card" data-delay="2">
-                    <div class="service-number">03</div>
-                    <h3>Branding & Papeterie</h3>
-                    <p>Logos, en-têtes, packaging. Une identité cohérente qui renforce votre marque.</p>
-                </div>
-                <div class="service-card" data-delay="3">
-                    <div class="service-number">04</div>
-                    <h3>Impression premium</h3>
-                    <p>Offset, numérique, dorure, vernis UV. Qualité professionnelle en Tunisie.</p>
-                </div>
+                <div class="service-card" data-delay="0"><div class="service-number">01</div><h3>Cartes de visite</h3><p>Design moderne, papier luxe, finitions sélectives. Une carte qui laisse une empreinte durable.</p></div>
+                <div class="service-card" data-delay="1"><div class="service-number">02</div><h3>Flyers & dépliants</h3><p>Formats A6, A5, carré. Créations percutantes pour vos événements et promotions.</p></div>
+                <div class="service-card" data-delay="2"><div class="service-number">03</div><h3>Branding & Papeterie</h3><p>Logos, en-têtes, packaging. Une identité cohérente qui renforce votre marque.</p></div>
+                <div class="service-card" data-delay="3"><div class="service-number">04</div><h3>Impression premium</h3><p>Offset, numérique, dorure, vernis UV. Qualité professionnelle en Tunisie.</p></div>
             </div>
         </div>
     </section>
@@ -1317,38 +898,7 @@
         <div class="container">
             <h2 class="section-title">Dernières réalisations</h2>
             <p class="section-sub">Des projets récents qui reflètent notre exigence et notre créativité.</p>
-            <div class="realisations-grid">
-                <div class="realisation-item">
-                    <div class="realisation-category">Carte de visite</div>
-                    <h4>Studio Créa Tunis</h4>
-                    <p>Finition mate · Orange texturé</p>
-                    <div class="realisation-divider"></div>
-                </div>
-                <div class="realisation-item">
-                    <div class="realisation-category">Flyer</div>
-                    <h4>Festival de Sousse</h4>
-                    <p>Format A5 · Édition 2025</p>
-                    <div class="realisation-divider"></div>
-                </div>
-                <div class="realisation-item">
-                    <div class="realisation-category">Pack identité</div>
-                    <h4>Startup Innovante</h4>
-                    <p>Logo + Papeterie complète</p>
-                    <div class="realisation-divider"></div>
-                </div>
-                <div class="realisation-item">
-                    <div class="realisation-category">Brochure</div>
-                    <h4>Groupe Hédi</h4>
-                    <p>Papier recyclé · 24 pages</p>
-                    <div class="realisation-divider"></div>
-                </div>
-                <div class="realisation-item">
-                    <div class="realisation-category">Affiche</div>
-                    <h4>Exposition Art</h4>
-                    <p>Format 60x80 · Vernis sélectif</p>
-                    <div class="realisation-divider"></div>
-                </div>
-            </div>
+            <div class="realisations-grid" id="realisationsGrid"></div>
         </div>
     </section>
 
@@ -1367,241 +917,256 @@
 <footer>
     <div class="container">
         <div class="footer-content">
-            <div class="footer-brand">
-                <div class="logo">
-                    <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'">
-                </div>
-                <p>Agence créative spécialisée dans le print et l'identité visuelle. Basée à Tunis, nous accompagnons les marques avec élégance et précision.</p>
-            </div>
-            <div class="footer-links-column">
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <a href="#accueil">Accueil</a>
-                    <a href="#services">Services</a>
-                    <a href="#realisations">Réalisations</a>
-                    <a href="#devis">Devis</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p>Tunis, Lac 2</p>
-                    <p>contact@proddesign.tn</p>
-                    <p>+216 20 961 180</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Suivez-nous</h4>
-                    <a href="#">Instagram</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Behance</a>
-                    <a href="#">LinkedIn</a>
-                </div>
-            </div>
+            <div class="footer-brand"><div class="logo"><img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'"></div><p>Agence créative spécialisée dans le print et l'identité visuelle. Basée à Tunis, nous accompagnons les marques avec élégance et précision.</p></div>
+            <div class="footer-links-column"><div class="footer-col"><h4>Navigation</h4><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#realisations">Réalisations</a><a href="#devis">Devis</a></div><div class="footer-col"><h4>Contact</h4><p>Tunis </p><p>khproductiondesign@gmail.com</p><p>+216 20 961 180</p></div><div class="footer-col"><h4>Suivez-nous</h4><a href="https://www.instagram.com/kh_productionesign/">Instagram</a><a href="#">Facebook</a><a href="https://www.behance.net/khproduct1">Behance</a></div></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 PROD DESIGN STUDIO · Tunisie · Création flyers, cartes de visite et identité visuelle</p>
-        </div>
+        <div class="footer-bottom"><p>© 2026 PROD DESIGN STUDIO · Tunisie · Création flyers, cartes de visite et identité visuelle</p></div>
     </div>
 </footer>
 
+<!-- MODAL DEVIS -->
 <div class="modal" id="devisModal">
     <div class="modal-content">
         <div class="modal-close" id="closeModalBtn">&times;</div>
         <h3>Demande de devis</h3>
         <p class="sub">Remplissez le formulaire, réponse sous 24 heures.</p>
-        <form id="devisForm">
-            <div class="form-group">
-                <label>Nom complet</label>
-                <input type="text" placeholder="Votre nom et prénom" required id="fullName">
-            </div>
-            <div class="form-group">
-                <label>Email professionnel</label>
-                <input type="email" placeholder="exemple@domaine.com" required id="emailAddress">
-            </div>
-            <div class="form-group">
-                <label>Type de support</label>
-                <select id="projectType">
-                    <option>Flyers & dépliants</option>
-                    <option>Cartes de visite</option>
-                    <option>Pack identité complet</option>
-                    <option>Autre support print</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Message (optionnel)</label>
-                <textarea rows="3" placeholder="Détails de votre projet..." id="projectMessage"></textarea>
-            </div>
-            <button type="submit" class="modal-btn">Envoyer la demande via WhatsApp</button>
-        </form>
-        <p style="margin-top: 20px; font-size: 0.7rem; color: #9CA3AF; text-align: center;">Sans engagement · Devis personnalisé</p>
+        <form id="devisForm"><div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom" required id="fullName"></div><div class="form-group"><label>Email professionnel</label><input type="email" placeholder="exemple@domaine.com" required id="emailAddress"></div><div class="form-group"><label>Type de support</label><select id="projectType"><option>Flyers & dépliants</option><option>Cartes de visite</option><option>Pack identité complet</option><option>Autre support print</option></select></div><div class="form-group"><label>Message (optionnel)</label><textarea rows="3" placeholder="Détails de votre projet..." id="projectMessage"></textarea></div><button type="submit" class="modal-btn">Envoyer la demande via WhatsApp</button></form>
+        <p style="margin-top: 20px; font-size: 0.7rem; text-align: center;">Sans engagement · Devis personnalisé</p>
+    </div>
+</div>
+
+<!-- ADMIN PANEL (modifier / ajouter réalisations) accessible via mot-clé "khalil" -->
+<div class="admin-modal" id="adminModal">
+    <div class="admin-modal-content">
+        <div class="modal-close" id="closeAdminModalBtn">&times;</div>
+        <h3>✏️ Panneau d'administration</h3>
+        <p class="admin-subtitle">Modifier ou ajouter des réalisations (catégorie, titre, description).</p>
+        <div id="adminRealisationsList"></div>
+        <button class="btn-add-realisation" id="addNewAdminRowBtn">+ Ajouter une réalisation</button>
+        <div class="admin-actions">
+            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder les modifications</button>
+            <button class="btn-admin-cancel" id="cancelAdminBtn">Annuler</button>
+        </div>
     </div>
 </div>
 
 <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+    // ---------- DONNÉES PAR DÉFAUT DES RÉALISATIONS ----------
+    const DEFAULT_REALISATIONS = [
+        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé" },
+        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025" },
+        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète" },
+        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages" },
+        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif" }
+    ];
+
+    let realisationsData = [];
+
+    // Chargement / localStorage
+    function loadRealisationsData() {
+        const stored = localStorage.getItem("proddesign_realisations");
+        if (stored) {
+            try {
+                realisationsData = JSON.parse(stored);
+                if (!Array.isArray(realisationsData) || realisationsData.length === 0) realisationsData = [...DEFAULT_REALISATIONS];
+            } catch(e) { realisationsData = [...DEFAULT_REALISATIONS]; }
         } else {
-            navbar.classList.remove('scrolled');
+            realisationsData = [...DEFAULT_REALISATIONS];
         }
-    });
+    }
 
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    function closeMenu() {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
-        document.body.style.overflow = '';
+    function saveRealisationsToLocal() {
+        localStorage.setItem("proddesign_realisations", JSON.stringify(realisationsData));
     }
-    
-    function openMenu() {
-        navLinks.classList.add('active');
-        menuToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
+
+    // Rendu dynamique des réalisations avec animations
+    function renderRealisations() {
+        const grid = document.getElementById("realisationsGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        realisationsData.forEach((item, idx) => {
+            const card = document.createElement("div");
+            card.className = "realisation-item";
+            card.style.opacity = "0";
+            card.innerHTML = `
+                <div class="realisation-category">${escapeHtml(item.category)}</div>
+                <h4>${escapeHtml(item.title)}</h4>
+                <p>${escapeHtml(item.desc)}</p>
+                <div class="realisation-divider"></div>
+            `;
+            grid.appendChild(card);
+        });
+        // Animation staggered
+        const items = document.querySelectorAll("#realisationsGrid .realisation-item");
+        items.forEach((el, i) => {
+            setTimeout(() => {
+                el.style.animation = "fadeUp 0.5s ease forwards";
+                el.style.opacity = "1";
+            }, i * 80);
+        });
     }
-    
-    if (menuToggle) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (navLinks.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
+
+    function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    // Rafraîchir tout : données, rendu
+    function refreshRealisations() {
+        renderRealisations();
+        saveRealisationsToLocal();
+    }
+
+    // ADMIN PANEL : ouverture, construction formulaire
+    let currentEditData = [];
+    const adminModal = document.getElementById("adminModal");
+    const adminListContainer = document.getElementById("adminRealisationsList");
+
+    function buildAdminForm() {
+        adminListContainer.innerHTML = "";
+        currentEditData.forEach((item, idx) => {
+            const row = document.createElement("div");
+            row.className = "admin-realisation-row";
+            row.dataset.index = idx;
+            row.innerHTML = `
+                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie (ex: Flyer)" style="flex:1;">
+                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="flex:1;">
+                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="flex:1.5;">
+                <button class="row-remove" data-idx="${idx}">Supprimer</button>
+            `;
+            adminListContainer.appendChild(row);
+        });
+        // ajouter events remove
+        document.querySelectorAll(".row-remove").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const idx = parseInt(btn.getAttribute("data-idx"));
+                if (!isNaN(idx)) {
+                    currentEditData.splice(idx, 1);
+                    buildAdminForm();
+                }
+            });
+        });
+    }
+
+    function openAdminPanel() {
+        // copie profonde des données actuelles
+        currentEditData = realisationsData.map(r => ({ ...r }));
+        buildAdminForm();
+        adminModal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeAdminPanel() {
+        adminModal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+
+    function saveAdminChanges() {
+        // récupérer depuis les champs
+        const rows = document.querySelectorAll("#adminRealisationsList .admin-realisation-row");
+        const newData = [];
+        rows.forEach(row => {
+            const catInput = row.querySelector(".admin-cat");
+            const titleInput = row.querySelector(".admin-title");
+            const descInput = row.querySelector(".admin-desc");
+            if (catInput && titleInput && descInput) {
+                let cat = catInput.value.trim();
+                let title = titleInput.value.trim();
+                let desc = descInput.value.trim();
+                if (title === "") title = "Réalisation";
+                if (cat === "") cat = "Création";
+                newData.push({ category: cat, title: title, desc: desc });
             }
         });
-    }
-    
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenu();
-        });
-    });
-    
-    document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-            closeMenu();
+        if (newData.length === 0) {
+            alert("Ajoutez au moins une réalisation.");
+            return;
         }
-    });
+        realisationsData = newData;
+        saveRealisationsToLocal();
+        renderRealisations();
+        closeAdminPanel();
+    }
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if (target) {
+    // Ajouter ligne vierge dans admin
+    function addEmptyAdminRow() {
+        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description..." });
+        buildAdminForm();
+    }
+
+    // GESTION CLAVIER : taper "khalil"
+    let keyBuffer = "";
+    function onKeydownHandler(e) {
+        const key = e.key;
+        if (key.length === 1 && /[a-zA-Z0-9]/i.test(key)) {
+            keyBuffer = (keyBuffer + key.toLowerCase()).slice(-6);
+            if (keyBuffer === "khalil") {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                closeMenu();
+                openAdminPanel();
+                keyBuffer = "";
             }
-        });
-    });
-
-    const exploreBtn = document.getElementById('exploreBtn');
-    if (exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    // Service cards animation
-    const serviceCards = document.querySelectorAll('.service-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+        } else {
+            if (key === "Escape" && adminModal.style.display === "flex") {
+                closeAdminPanel();
             }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-
-    serviceCards.forEach(card => {
-        observer.observe(card);
-    });
-
-    // Realisations items animation
-    const realisationItems = document.querySelectorAll('.realisation-item');
-    realisationItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        setTimeout(() => {
-            item.style.animation = 'fadeUp 0.5s ease forwards';
-            item.style.opacity = '1';
-        }, 100 + index * 80);
-    });
-
-    // Modal logic
-    const modal = document.getElementById('devisModal');
-    const openBtn = document.getElementById('openModalBtn');
-    const closeBtn = document.getElementById('closeModalBtn');
-
-    function openModal() {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        closeMenu();
+        }
     }
+    window.addEventListener("keydown", onKeydownHandler);
 
-    function closeModalFunc() {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-    }
-
-    if (openBtn) openBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModalFunc);
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) closeModalFunc();
+    // Initialisation + service cards animation
+    document.addEventListener("DOMContentLoaded", () => {
+        loadRealisationsData();
+        renderRealisations();
+        // service cards animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".service-card").forEach(card => observer.observe(card));
+        // stats anim
+        document.querySelectorAll(".stat-item").forEach((stat, idx) => { stat.style.opacity = "0"; setTimeout(() => { stat.style.animation = "fadeUp 0.5s ease forwards"; stat.style.opacity = "1"; }, 300 + idx * 100); });
     });
 
-    // Formulaire -> WhatsApp avec message structuré PRO
-    const form = document.getElementById('devisForm');
-    if (form) {
-        form.addEventListener('submit', (e) => {
+    // Navbar scroll, menu mobile, etc
+    window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+    const menuToggle = document.getElementById('menuToggle'), navLinks = document.getElementById('navLinks');
+    function closeMenu() { navLinks.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; }
+    function openMenu() { navLinks.classList.add('active'); menuToggle.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.contains('active') ? closeMenu() : openMenu(); });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => { if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) closeMenu(); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const target = document.querySelector(this.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); closeMenu(); } }); });
+    document.getElementById('exploreBtn')?.addEventListener('click', () => { document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); });
+
+    // Modal devis
+    const devisModal = document.getElementById('devisModal');
+    const openDevisBtn = document.getElementById('openModalBtn');
+    const closeDevisBtn = document.getElementById('closeModalBtn');
+    function openDevisModal() { devisModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; closeMenu(); }
+    function closeDevisModal() { devisModal.style.display = 'none'; document.body.style.overflow = ''; }
+    if (openDevisBtn) openDevisBtn.addEventListener('click', openDevisModal);
+    if (closeDevisBtn) closeDevisBtn.addEventListener('click', closeDevisModal);
+    window.addEventListener('click', (e) => { if (e.target === devisModal) closeDevisModal(); if (e.target === adminModal) closeAdminPanel(); });
+    const devisForm = document.getElementById('devisForm');
+    if (devisForm) {
+        devisForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('fullName').value.trim();
             const email = document.getElementById('emailAddress').value.trim();
             const projectType = document.getElementById('projectType').value;
             const message = document.getElementById('projectMessage').value.trim();
-
-            if (!name || !email || !email.includes('@')) {
-                alert('Veuillez renseigner un nom et un email valide.');
-                return;
-            }
-
-            // Construction du message professionnel structuré
-            let waMsg = " *NOUVELLE DEMANDE DE DEVIS - PROD DESIGN* %0A%0A";
-            waMsg += ` *Nom complet* : ${name}%0A`;
-            waMsg += `*Email* : ${email}%0A`;
-            waMsg += `*Type de support* : ${projectType}%0A`;
-            waMsg += `*Date* : ${new Date().toLocaleDateString('fr-FR')}%0A%0A`;
-            if (message) {
-                waMsg += `*Détails du projet* :%0A${message}%0A%0A`;
-            } else {
-                waMsg += `*Détails* : À préciser lors de l'échange.%0A%0A`;
-            }
-            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé avec maquette offerte.%0A`;
-            waMsg += `*PROD DESIGN - Création print Tunisie* `;
-
-            const whatsappNumber = "21620961180";
-            const url = `https://wa.me/${whatsappNumber}?text=${waMsg}`;
-            window.open(url, '_blank');
-            
-            alert(`Merci ${name} ! Vous allez être redirigé vers WhatsApp pour envoyer votre demande structurée.`);
-            closeModalFunc();
-            form.reset();
+            if (!name || !email || !email.includes('@')) { alert('Veuillez renseigner un nom et un email valide.'); return; }
+            let waMsg = ` *NOUVELLE DEMANDE DE DEVIS - PROD DESIGN* %0A%0A *Nom complet* : ${name}%0A*Email* : ${email}%0A*Type de support* : ${projectType}%0A*Date* : ${new Date().toLocaleDateString('fr-FR')}%0A%0A`;
+            if (message) waMsg += `*Détails du projet* :%0A${message}%0A%0A`; else waMsg += `*Détails* : À préciser lors de l'échange.%0A%0A`;
+            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé avec maquette offerte.%0A*PROD DESIGN - Création print Tunisie*`;
+            window.open(`https://wa.me/21620961180?text=${waMsg}`, '_blank');
+            alert(`Merci ${name} ! Vous allez être redirigé vers WhatsApp.`);
+            closeDevisModal();
+            devisForm.reset();
         });
     }
 
-    const stats = document.querySelectorAll('.stat-item');
-    stats.forEach((stat, index) => {
-        stat.style.opacity = '0';
-        setTimeout(() => {
-            stat.style.animation = 'fadeUp 0.5s ease forwards';
-            stat.style.opacity = '1';
-        }, 300 + index * 100);
-    });
+    // Admin panel controls
+    document.getElementById("closeAdminModalBtn")?.addEventListener("click", closeAdminPanel);
+    document.getElementById("saveAdminChangesBtn")?.addEventListener("click", saveAdminChanges);
+    document.getElementById("cancelAdminBtn")?.addEventListener("click", closeAdminPanel);
+    document.getElementById("addNewAdminRowBtn")?.addEventListener("click", addEmptyAdminRow);
 </script>
 </body>
 </html>
