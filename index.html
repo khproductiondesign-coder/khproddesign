@@ -25,7 +25,10 @@
             --primary-dark: #0a1a2f;
             --primary-accent: #e07a15;
             --gray-light: #e6e6e6;
+            --gray-soft: #f2f2f2;
             --white: #ffffff;
+            --gray-mid: #b0b0b0;
+            --gray-deep: #4a4a4a;
             --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
             --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
         }
@@ -118,6 +121,7 @@
             }
         }
 
+        /* Menu hamburger */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -489,14 +493,14 @@
 
         @media (min-width: 640px) {
             .realisations-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
             }
         }
 
         @media (min-width: 1024px) {
             .realisations-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(5, 1fr);
                 gap: 24px;
             }
         }
@@ -504,28 +508,16 @@
         .realisation-item {
             background: var(--white);
             border-radius: 24px;
-            padding: 20px 16px;
+            padding: 24px 16px;
             text-align: center;
             border: 1px solid #d4d4d4;
             transition: all 0.3s;
             box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .realisation-item:hover {
             transform: translateY(-6px);
             border-color: #e07a15;
-        }
-
-        .realisation-image {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 14px;
-            background-color: #eee;
         }
 
         .realisation-category {
@@ -534,11 +526,11 @@
             color: #e07a15;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .realisation-item h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             margin-bottom: 6px;
             color: #0a1a2f;
@@ -547,63 +539,14 @@
         .realisation-item p {
             font-size: 0.7rem;
             color: #5a6e7c;
-            margin-bottom: 10px;
-        }
-
-        .realisation-link {
-            font-size: 0.7rem;
-            color: #e07a15;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            border: 1px solid #e07a15;
-            padding: 4px 12px;
-            border-radius: 40px;
-            transition: 0.2s;
-            margin-top: 6px;
-        }
-
-        .realisation-link:hover {
-            background: #e07a15;
-            color: white;
         }
 
         .realisation-divider {
             width: 30px;
             height: 2px;
             background: #e07a15;
-            margin: 10px auto 4px;
+            margin: 12px auto 0;
             opacity: 0.5;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        .pagination button {
-            background: white;
-            border: 1px solid #d4d4d4;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.2s;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        .pagination button.active {
-            background: #e07a15;
-            color: white;
-            border-color: #e07a15;
-        }
-        .pagination button:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
         }
 
         /* CTA */
@@ -827,16 +770,15 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            align-items: flex-start;
+            align-items: flex-end;
         }
         .admin-realisation-row input, .admin-realisation-row textarea {
             flex: 1;
-            min-width: 140px;
-            padding: 8px 12px;
+            min-width: 150px;
+            padding: 10px 12px;
             border-radius: 28px;
             border: 1px solid #ccc;
             font-family: inherit;
-            font-size: 0.8rem;
         }
         .admin-realisation-row .row-remove {
             background: #dc2626;
@@ -957,7 +899,6 @@
             <h2 class="section-title">Dernières réalisations</h2>
             <p class="section-sub">Des projets récents qui reflètent notre exigence et notre créativité.</p>
             <div class="realisations-grid" id="realisationsGrid"></div>
-            <div class="pagination" id="paginationControls"></div>
         </div>
     </section>
 
@@ -994,38 +935,36 @@
     </div>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- ADMIN PANEL (modifier / ajouter réalisations) accessible via mot-clé "khalil" -->
 <div class="admin-modal" id="adminModal">
     <div class="admin-modal-content">
         <div class="modal-close" id="closeAdminModalBtn">&times;</div>
         <h3>✏️ Panneau d'administration</h3>
-        <p class="admin-subtitle">Modifier / ajouter des réalisations (image, lien, catégorie, titre, description).</p>
+        <p class="admin-subtitle">Modifier ou ajouter des réalisations (catégorie, titre, description).</p>
         <div id="adminRealisationsList"></div>
         <button class="btn-add-realisation" id="addNewAdminRowBtn">+ Ajouter une réalisation</button>
         <div class="admin-actions">
-            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder</button>
+            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder les modifications</button>
             <button class="btn-admin-cancel" id="cancelAdminBtn">Annuler</button>
         </div>
     </div>
 </div>
 
 <script>
-    // ---------- DONNÉES AVEC IMAGES ET LIENS ----------
+    // ---------- DONNÉES PAR DÉFAUT DES RÉALISATIONS ----------
     const DEFAULT_REALISATIONS = [
-        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé", imageUrl: "https://placehold.co/400x300/0a1a2f/e07a15?text=Carte+Visite", linkUrl: "" },
-        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025", imageUrl: "https://placehold.co/400x300/e07a15/white?text=Flyer+A5", linkUrl: "" },
-        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète", imageUrl: "https://placehold.co/400x300/2c3e50/e07a15?text=Pack+Identite", linkUrl: "https://www.behance.net/khproduct1" },
-        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages", imageUrl: "https://placehold.co/400x300/5a6e7c/e07a15?text=Brochure", linkUrl: "" },
-        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif", imageUrl: "https://placehold.co/400x300/0a1a2f/white?text=Affiche", linkUrl: "" },
-        { category: "Carte de visite", title: "Luxe & Co", desc: "Dorure à chaud", imageUrl: "https://placehold.co/400x300/c49a6c/0a1a2f?text=Luxe+Co", linkUrl: "https://www.instagram.com/kh_productionesign/" }
+        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé" },
+        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025" },
+        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète" },
+        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages" },
+        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif" }
     ];
 
     let realisationsData = [];
-    let currentPage = 1;
-    const itemsPerPage = 5;
 
+    // Chargement / localStorage
     function loadRealisationsData() {
-        const stored = localStorage.getItem("proddesign_realisations_advanced");
+        const stored = localStorage.getItem("proddesign_realisations");
         if (stored) {
             try {
                 realisationsData = JSON.parse(stored);
@@ -1037,69 +976,45 @@
     }
 
     function saveRealisationsToLocal() {
-        localStorage.setItem("proddesign_realisations_advanced", JSON.stringify(realisationsData));
+        localStorage.setItem("proddesign_realisations", JSON.stringify(realisationsData));
     }
 
-    // Rendu avec pagination
+    // Rendu dynamique des réalisations avec animations
     function renderRealisations() {
         const grid = document.getElementById("realisationsGrid");
         if (!grid) return;
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedItems = realisationsData.slice(start, end);
-        
         grid.innerHTML = "";
-        paginatedItems.forEach((item) => {
+        realisationsData.forEach((item, idx) => {
             const card = document.createElement("div");
             card.className = "realisation-item";
-            const imgUrl = item.imageUrl && item.imageUrl.trim() !== "" ? item.imageUrl : "https://placehold.co/400x300/d4d4d4/0a1a2f?text=Image+manquante";
-            const hasLink = item.linkUrl && item.linkUrl.trim() !== "";
+            card.style.opacity = "0";
             card.innerHTML = `
-                <img class="realisation-image" src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://placehold.co/400x300/d4d4d4/0a1a2f?text=Erreur+Image'">
                 <div class="realisation-category">${escapeHtml(item.category)}</div>
                 <h4>${escapeHtml(item.title)}</h4>
                 <p>${escapeHtml(item.desc)}</p>
                 <div class="realisation-divider"></div>
-                ${hasLink ? `<a href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer" class="realisation-link">Voir le projet →</a>` : ''}
             `;
             grid.appendChild(card);
         });
-        renderPagination();
-        // Animation
-        document.querySelectorAll("#realisationsGrid .realisation-item").forEach((el, i) => {
-            el.style.opacity = "0";
+        // Animation staggered
+        const items = document.querySelectorAll("#realisationsGrid .realisation-item");
+        items.forEach((el, i) => {
             setTimeout(() => {
-                el.style.animation = "fadeUp 0.4s ease forwards";
+                el.style.animation = "fadeUp 0.5s ease forwards";
                 el.style.opacity = "1";
             }, i * 80);
         });
     }
 
-    function renderPagination() {
-        const totalPages = Math.ceil(realisationsData.length / itemsPerPage);
-        const pagContainer = document.getElementById("paginationControls");
-        if (!pagContainer) return;
-        if (totalPages <= 1) { pagContainer.innerHTML = ""; return; }
-        let html = `<button class="page-prev" ${currentPage === 1 ? 'disabled' : ''}>‹ Précédent</button>`;
-        for (let i = 1; i <= totalPages; i++) {
-            html += `<button class="page-num ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
-        }
-        html += `<button class="page-next" ${currentPage === totalPages ? 'disabled' : ''}>Suivant ›</button>`;
-        pagContainer.innerHTML = html;
-        // events
-        pagContainer.querySelectorAll(".page-prev").forEach(btn => btn.addEventListener("click", () => { if(currentPage > 1) { currentPage--; renderRealisations(); } }));
-        pagContainer.querySelectorAll(".page-next").forEach(btn => btn.addEventListener("click", () => { if(currentPage < totalPages) { currentPage++; renderRealisations(); } }));
-        pagContainer.querySelectorAll(".page-num").forEach(btn => btn.addEventListener("click", (e) => { currentPage = parseInt(e.target.dataset.page); renderRealisations(); }));
-    }
+    function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
 
-    function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
-
+    // Rafraîchir tout : données, rendu
     function refreshRealisations() {
-        saveRealisationsToLocal();
         renderRealisations();
+        saveRealisationsToLocal();
     }
 
-    // ADMIN PANEL AVEC GESTION IMAGE + LIEN
+    // ADMIN PANEL : ouverture, construction formulaire
     let currentEditData = [];
     const adminModal = document.getElementById("adminModal");
     const adminListContainer = document.getElementById("adminRealisationsList");
@@ -1111,15 +1026,14 @@
             row.className = "admin-realisation-row";
             row.dataset.index = idx;
             row.innerHTML = `
-                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie" style="min-width:100px">
-                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="min-width:120px">
-                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="min-width:140px">
-                <input type="text" class="admin-image" value="${escapeHtml(item.imageUrl || '')}" placeholder="URL de l'image" style="min-width:180px">
-                <input type="text" class="admin-link" value="${escapeHtml(item.linkUrl || '')}" placeholder="Lien (optionnel)" style="min-width:150px">
+                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie (ex: Flyer)" style="flex:1;">
+                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="flex:1;">
+                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="flex:1.5;">
                 <button class="row-remove" data-idx="${idx}">Supprimer</button>
             `;
             adminListContainer.appendChild(row);
         });
+        // ajouter events remove
         document.querySelectorAll(".row-remove").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = parseInt(btn.getAttribute("data-idx"));
@@ -1132,6 +1046,7 @@
     }
 
     function openAdminPanel() {
+        // copie profonde des données actuelles
         currentEditData = realisationsData.map(r => ({ ...r }));
         buildAdminForm();
         adminModal.style.display = "flex";
@@ -1144,29 +1059,39 @@
     }
 
     function saveAdminChanges() {
+        // récupérer depuis les champs
         const rows = document.querySelectorAll("#adminRealisationsList .admin-realisation-row");
         const newData = [];
         rows.forEach(row => {
-            const cat = row.querySelector(".admin-cat")?.value.trim() || "Nouveau";
-            const title = row.querySelector(".admin-title")?.value.trim() || "Projet";
-            const desc = row.querySelector(".admin-desc")?.value.trim() || "";
-            const image = row.querySelector(".admin-image")?.value.trim() || "";
-            const link = row.querySelector(".admin-link")?.value.trim() || "";
-            newData.push({ category: cat, title: title, desc: desc, imageUrl: image, linkUrl: link });
+            const catInput = row.querySelector(".admin-cat");
+            const titleInput = row.querySelector(".admin-title");
+            const descInput = row.querySelector(".admin-desc");
+            if (catInput && titleInput && descInput) {
+                let cat = catInput.value.trim();
+                let title = titleInput.value.trim();
+                let desc = descInput.value.trim();
+                if (title === "") title = "Réalisation";
+                if (cat === "") cat = "Création";
+                newData.push({ category: cat, title: title, desc: desc });
+            }
         });
-        if (newData.length === 0) { alert("Ajoutez au moins une réalisation."); return; }
+        if (newData.length === 0) {
+            alert("Ajoutez au moins une réalisation.");
+            return;
+        }
         realisationsData = newData;
-        if (currentPage > Math.ceil(realisationsData.length / itemsPerPage)) currentPage = 1;
-        refreshRealisations();
+        saveRealisationsToLocal();
+        renderRealisations();
         closeAdminPanel();
     }
 
+    // Ajouter ligne vierge dans admin
     function addEmptyAdminRow() {
-        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description", imageUrl: "", linkUrl: "" });
+        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description..." });
         buildAdminForm();
     }
 
-    // CLAVIER "khalil"
+    // GESTION CLAVIER : taper "khalil"
     let keyBuffer = "";
     function onKeydownHandler(e) {
         const key = e.key;
@@ -1178,24 +1103,27 @@
                 keyBuffer = "";
             }
         } else {
-            if (key === "Escape" && adminModal.style.display === "flex") closeAdminPanel();
+            if (key === "Escape" && adminModal.style.display === "flex") {
+                closeAdminPanel();
+            }
         }
     }
     window.addEventListener("keydown", onKeydownHandler);
 
-    // Initialisations
+    // Initialisation + service cards animation
     document.addEventListener("DOMContentLoaded", () => {
         loadRealisationsData();
         renderRealisations();
-        // Service cards animation
+        // service cards animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll(".service-card").forEach(card => observer.observe(card));
+        // stats anim
         document.querySelectorAll(".stat-item").forEach((stat, idx) => { stat.style.opacity = "0"; setTimeout(() => { stat.style.animation = "fadeUp 0.5s ease forwards"; stat.style.opacity = "1"; }, 300 + idx * 100); });
     });
 
-    // Navbar, menu, scroll
+    // Navbar scroll, menu mobile, etc
     window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
     const menuToggle = document.getElementById('menuToggle'), navLinks = document.getElementById('navLinks');
     function closeMenu() { navLinks.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; }
@@ -1226,15 +1154,15 @@
             if (!name || !email || !email.includes('@')) { alert('Veuillez renseigner un nom et un email valide.'); return; }
             let waMsg = ` *NOUVELLE DEMANDE DE DEVIS - PROD DESIGN* %0A%0A *Nom complet* : ${name}%0A*Email* : ${email}%0A*Type de support* : ${projectType}%0A*Date* : ${new Date().toLocaleDateString('fr-FR')}%0A%0A`;
             if (message) waMsg += `*Détails du projet* :%0A${message}%0A%0A`; else waMsg += `*Détails* : À préciser lors de l'échange.%0A%0A`;
-            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé.%0A*PROD DESIGN - Création print Tunisie*`;
+            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé avec maquette offerte.%0A*PROD DESIGN - Création print Tunisie*`;
             window.open(`https://wa.me/21620961180?text=${waMsg}`, '_blank');
-            alert(`Merci ${name} ! Redirection WhatsApp.`);
+            alert(`Merci ${name} ! Vous allez être redirigé vers WhatsApp.`);
             closeDevisModal();
             devisForm.reset();
         });
     }
 
-    // Admin buttons
+    // Admin panel controls
     document.getElementById("closeAdminModalBtn")?.addEventListener("click", closeAdminPanel);
     document.getElementById("saveAdminChangesBtn")?.addEventListener("click", saveAdminChanges);
     document.getElementById("cancelAdminBtn")?.addEventListener("click", closeAdminPanel);
