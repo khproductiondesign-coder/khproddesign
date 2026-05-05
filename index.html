@@ -11,30 +11,67 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: #e6e6e6;
             color: #0a1a2f;
             line-height: 1.5;
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
+
         :root {
             --primary-dark: #0a1a2f;
             --primary-accent: #e07a15;
+            --gray-light: #e6e6e6;
             --white: #ffffff;
-            --shadow-sm: 0 10px 25px -5px rgba(0,0,0,0.05);
-            --shadow-md: 0 20px 35px -12px rgba(0,0,0,0.08);
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
         }
+
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float1 {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(-2deg); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        @media (min-width: 768px) { .container { padding: 0 40px; } }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+        }
 
         /* Navbar */
         .navbar {
@@ -44,14 +81,43 @@
             z-index: 1000;
             padding: 16px 0;
             transition: all 0.3s ease;
-            background: rgba(230,230,230,0.95);
+            background: rgba(230, 230, 230, 0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(224,122,21,0.15);
+            border-bottom: 1px solid rgba(224, 122, 21, 0.15);
         }
-        .navbar.scrolled { padding: 10px 0; background: rgba(230,230,230,0.98); }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .logo-img { width: 130px; height: auto; }
-        @media (min-width:768px){ .logo-img { width: 150px; } }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(230, 230, 230, 0.98);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-img {
+            width: 130px;
+            height: auto;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                width: 150px;
+            }
+        }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -61,6 +127,7 @@
             cursor: pointer;
             z-index: 1001;
         }
+
         .menu-toggle span {
             display: block;
             height: 2.5px;
@@ -69,16 +136,32 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-        .menu-toggle.active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
-        .menu-toggle.active span:nth-child(2) { opacity: 0; }
-        .menu-toggle.active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+        }
+
         .nav-links {
             display: flex;
             gap: 20px;
             align-items: center;
             flex-wrap: wrap;
         }
-        @media (min-width:768px){ .nav-links { gap: 36px; } }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                gap: 36px;
+            }
+        }
+
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
@@ -86,16 +169,29 @@
             transition: color 0.2s;
             font-size: 0.9rem;
         }
-        .nav-links a:hover { color: #e07a15; }
+
+        .nav-links a:hover {
+            color: #e07a15;
+        }
+
         .nav-btn {
             background: #e07a15;
             padding: 6px 20px;
             border-radius: 40px;
             color: white !important;
             font-weight: 600;
+            transition: all 0.25s;
         }
+
+        .nav-btn:hover {
+            background: #c05f0c;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 767px) {
-            .menu-toggle { display: flex; }
+            .menu-toggle {
+                display: flex;
+            }
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -103,18 +199,32 @@
                 width: 75%;
                 max-width: 280px;
                 height: 100vh;
-                background: rgba(10,26,47,0.98);
+                background: rgba(10, 26, 47, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 32px;
-                transition: right 0.4s cubic-bezier(0.2,0.9,0.4,1.1);
+                transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
                 z-index: 999;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
                 padding: 80px 24px;
             }
-            .nav-links.active { right: 0; }
-            .nav-links a { color: white; font-size: 1.2rem; width: 100%; text-align: center; }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                color: #ffffff;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(224, 122, 21, 0.3);
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+            }
+            .nav-btn {
+                background: #e07a15;
+                color: white !important;
+            }
         }
 
         /* Hero */
@@ -124,7 +234,13 @@
             align-items: center;
             padding: 100px 0 60px;
         }
-        @media (min-width:768px){ .hero { padding: 140px 0 80px; } }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+        }
+
         .hero-grid {
             display: flex;
             align-items: center;
@@ -132,15 +248,23 @@
             flex-wrap: wrap;
             flex-direction: column;
         }
-        @media (min-width:900px){ .hero-grid { flex-direction: row; gap: 60px; } }
+
+        @media (min-width: 900px) {
+            .hero-grid {
+                flex-direction: row;
+                gap: 60px;
+            }
+        }
+
         .hero-content {
             flex: 1.2;
-            animation: fadeUp 0.8s ease forwards;
+            animation: slideInLeft 0.8s ease forwards;
             width: 100%;
         }
+
         .hero-tag {
             display: inline-block;
-            background: rgba(224,122,21,0.12);
+            background: rgba(224, 122, 21, 0.12);
             padding: 6px 16px;
             border-radius: 100px;
             font-size: 0.7rem;
@@ -148,59 +272,118 @@
             color: #e07a15;
             margin-bottom: 20px;
         }
+
         .hero-content h1 {
             font-size: 2.2rem;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
+            color: #0a1a2f;
         }
-        @media (min-width:768px){ .hero-content h1 { font-size: 3rem; } }
-        @media (min-width:1024px){ .hero-content h1 { font-size: 4rem; } }
-        .hero-content h1 .orange { color: #e07a15; }
+
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+        }
+
+        .hero-content h1 .orange {
+            color: #e07a15;
+        }
+
         .hero-desc {
             font-size: 1rem;
             color: #2c3e4e;
+            max-width: 100%;
             margin-bottom: 28px;
         }
+
         .btn-primary {
             background: #e07a15;
             border: none;
             padding: 12px 32px;
             border-radius: 48px;
             font-weight: 600;
+            font-size: 0.9rem;
             color: white;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
             display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            max-width: 280px;
         }
-        .btn-primary:hover { background: #c05f0c; transform: translateY(-3px); }
+
+        .btn-primary:hover {
+            background: #c05f0c;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(224, 122, 21, 0.4);
+        }
+
         .hero-stats {
             display: flex;
             gap: 32px;
             margin-top: 40px;
             flex-wrap: wrap;
         }
-        .stat-item .stat-number { font-size: 1.5rem; font-weight: 700; }
-        .stat-item .stat-label { font-size: 0.75rem; color: #5a6e7c; }
+
+        .stat-item .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a1a2f;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.75rem;
+            color: #5a6e7c;
+            font-weight: 500;
+        }
+
         .hero-visual {
             flex: 1;
             position: relative;
             min-height: 320px;
+            width: 100%;
+            animation: slideInRight 0.8s ease forwards;
         }
+
         .card-float {
             background: var(--white);
             border-radius: 28px;
             padding: 20px;
             width: 220px;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(224,122,21,0.2);
+            border: 1px solid rgba(224, 122, 21, 0.2);
+            animation: float1 5s ease-in-out infinite;
         }
+
         .card-float-inner {
-            background: linear-gradient(145deg,#fcfcfc,#f5f5f5);
+            background: linear-gradient(145deg, #fcfcfc, #f5f5f5);
             border-radius: 20px;
             padding: 20px 16px;
             text-align: center;
+            border: 1px solid rgba(224, 122, 21, 0.15);
         }
+
+        .card-float-inner h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card-float-inner .line {
+            width: 40px;
+            height: 2px;
+            background: #e07a15;
+            margin: 12px auto;
+            border-radius: 2px;
+        }
+
         .card-float-2 {
             position: absolute;
             bottom: -20px;
@@ -210,95 +393,191 @@
             border-radius: 24px;
             padding: 16px;
             box-shadow: var(--shadow-md);
+            border: 1px solid rgba(224, 122, 21, 0.2);
+            animation: float2 4.8s ease-in-out infinite;
         }
 
-        /* Services */
-        .section { padding: 60px 0; }
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
         .section-title {
             text-align: center;
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 12px;
+            color: #0a1a2f;
         }
-        @media (min-width:768px){ .section-title { font-size: 2.6rem; } }
+
         .section-sub {
             text-align: center;
             color: #3a4f62;
             max-width: 680px;
             margin: 0 auto 40px;
+            font-size: 0.9rem;
         }
+
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 24px;
         }
-        @media (min-width:640px){ .services-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width:1024px){ .services-grid { grid-template-columns: repeat(4,1fr); } }
+
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+
         .service-card {
             background: var(--white);
             padding: 32px 20px;
             border-radius: 28px;
+            transition: all 0.35s;
             border: 1px solid #d4d4d4;
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.35s;
+            box-shadow: var(--shadow-sm);
         }
-        .service-card.visible { animation: fadeUp 0.6s ease forwards; }
-        .service-card:hover { transform: translateY(-8px); border-color: #e07a15; }
-        .service-number { font-size: 1.8rem; font-weight: 700; color: #e07a15; opacity: 0.5; margin-bottom: 16px; }
 
-        /* Réalisations */
+        .service-card.visible {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #e07a15;
+        }
+
+        .service-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e07a15;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
         .realisations-section {
             background: #f7f7f7;
             border-radius: 32px;
             margin: 20px 0;
             padding: 40px 0;
         }
+
         .realisations-grid {
             display: grid;
-            grid-template-columns: repeat(1,1fr);
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
             margin-top: 32px;
+            padding: 0 16px;
         }
-        @media (min-width:640px){ .realisations-grid { grid-template-columns: repeat(2,1fr); } }
-        @media (min-width:1024px){ .realisations-grid { grid-template-columns: repeat(3,1fr); } }
+
+        @media (min-width: 640px) {
+            .realisations-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .realisations-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
         .realisation-item {
-            background: white;
+            background: var(--white);
             border-radius: 24px;
-            padding: 20px;
+            padding: 20px 16px;
             text-align: center;
             border: 1px solid #d4d4d4;
-            transition: 0.3s;
-            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .realisation-item:hover { transform: translateY(-6px); border-color: #e07a15; }
+
+        .realisation-item:hover {
+            transform: translateY(-6px);
+            border-color: #e07a15;
+        }
+
         .realisation-image {
             width: 100%;
-            height: 180px;
+            height: 140px;
             object-fit: cover;
             border-radius: 16px;
             margin-bottom: 14px;
-            background: #ddd;
+            background-color: #eee;
         }
+
         .realisation-category {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: #e07a15;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 8px;
         }
-        .realisation-item h4 { font-size: 1.1rem; margin: 8px 0 4px; }
-        .realisation-desc { font-size: 0.8rem; color: #5a6e7c; margin-bottom: 8px; }
-        .badge-images {
-            display: inline-block;
-            background: #e07a15;
-            color: white;
+
+        .realisation-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #0a1a2f;
+        }
+
+        .realisation-item p {
             font-size: 0.7rem;
+            color: #5a6e7c;
+            margin-bottom: 10px;
+        }
+
+        .realisation-link {
+            font-size: 0.7rem;
+            color: #e07a15;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid #e07a15;
             padding: 4px 12px;
             border-radius: 40px;
-            margin-top: 8px;
+            transition: 0.2s;
+            margin-top: 6px;
         }
+
+        .realisation-link:hover {
+            background: #e07a15;
+            color: white;
+        }
+
+        .realisation-divider {
+            width: 30px;
+            height: 2px;
+            background: #e07a15;
+            margin: 10px auto 4px;
+            opacity: 0.5;
+        }
+
         /* Pagination */
         .pagination {
             display: flex;
@@ -310,205 +589,333 @@
         .pagination button {
             background: white;
             border: 1px solid #d4d4d4;
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 40px;
+            font-weight: 500;
             cursor: pointer;
-            font-family: inherit;
             transition: 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
         }
         .pagination button.active {
             background: #e07a15;
             color: white;
             border-color: #e07a15;
         }
-        .pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .lightbox.active { display: flex; }
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 80vh;
-            position: relative;
-        }
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 70vh;
-            border-radius: 16px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-        .lightbox-nav {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .lightbox-nav button {
-            background: #e07a15;
-            border: none;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .lightbox-caption {
-            color: white;
-            margin-top: 16px;
-            text-align: center;
+        .pagination button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
         }
 
-        /* CTA + Footer */
+        /* CTA */
         .cta-section {
             background: #0a1a2f;
             border-radius: 32px;
             margin: 20px 0 60px;
+            overflow: hidden;
         }
+
         .cta-inner {
             padding: 48px 24px;
             text-align: center;
-            background: linear-gradient(135deg,#071225,#10223b);
+            background: linear-gradient(135deg, #071225 0%, #10223b 100%);
         }
-        .cta-inner h2 { color: white; font-size: 1.6rem; margin-bottom: 16px; }
-        .btn-cta { background: #e07a15; color: white; padding: 14px 36px; border-radius: 48px; border: none; cursor: pointer; font-weight: 600; }
+
+        .cta-line {
+            width: 50px;
+            height: 3px;
+            background: #e07a15;
+            margin: 0 auto 20px;
+        }
+
+        .cta-inner h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-inner p {
+            color: #cbd5e1;
+            max-width: 520px;
+            margin: 0 auto 28px;
+        }
+
+        .btn-cta {
+            background: #e07a15;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 48px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .btn-cta:hover {
+            background: #c05f0c;
+        }
+
+        /* Footer */
         footer {
-            background: white;
+            background: var(--white);
+            border-top: 1px solid rgba(10, 26, 47, 0.1);
             padding: 40px 0 32px;
-            border-top: 1px solid rgba(0,0,0,0.1);
         }
+
         .footer-content {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             gap: 32px;
+            margin-bottom: 32px;
         }
-        .footer-col a, .footer-col p { color: #5a6e7c; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 8px; }
-        .footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid #e0e0e0; margin-top: 32px; font-size: 0.7rem; }
 
-        /* Admin Modal */
-        .admin-modal {
+        .footer-brand p {
+            color: #5a6e7c;
+            font-size: 0.8rem;
+            max-width: 260px;
+        }
+
+        .footer-links-column {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-col a, .footer-col p {
+            display: block;
+            text-decoration: none;
+            color: #5a6e7c;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #e07a15;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            color: #8a9aaa;
+            font-size: 0.7rem;
+        }
+
+        /* Modals (Devis + Admin) */
+        .modal, .admin-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(6px);
-            z-index: 3000;
+            z-index: 2000;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 16px;
         }
-        .admin-modal-content {
-            background: white;
+
+        .modal-content, .admin-modal-content {
+            background: var(--white);
             border-radius: 32px;
             max-width: 800px;
             width: 100%;
+            padding: 32px 24px;
+            position: relative;
+            animation: fadeUp 0.3s;
+            border-top: 4px solid #e07a15;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 30px;
-            border-top: 4px solid #e07a15;
         }
-        .admin-realisation-row {
-            background: #f9f9f9;
-            border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-        }
-        .admin-realisation-row input, .admin-realisation-row textarea {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px 14px;
-            border-radius: 28px;
-            border: 1px solid #ccc;
-            font-family: inherit;
-        }
-        .images-upload-area {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 10px 0;
-        }
-        .image-preview {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-        }
-        .btn-add-img {
-            background: #0a1a2f;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 40px;
-            border: none;
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.8rem;
             cursor: pointer;
-            font-size: 0.7rem;
+            color: #aaa;
+            transition: 0.2s;
         }
-        .admin-actions { display: flex; gap: 16px; justify-content: flex-end; margin-top: 20px; }
-        .btn-save { background: #e07a15; color: white; padding: 12px 28px; border-radius: 40px; border: none; cursor: pointer; }
-        .btn-cancel { background: #6c757d; color: white; padding: 12px 28px; border-radius: 40px; border: none; cursor: pointer; }
-        .btn-add-realisation { background: #0a1a2f; color: white; padding: 10px 20px; border-radius: 40px; margin-bottom: 20px; cursor: pointer; }
+
+        .modal-close:hover {
+            color: #e07a15;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 28px;
+            border: 1px solid #d4d4d4;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            background: #fafafa;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #e07a15;
+        }
+
+        .modal-btn {
+            background: #e07a15;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
         .whatsapp-float {
             position: fixed;
             bottom: 24px;
             right: 24px;
-            background: #25D366;
+            background-color: #25D366;
+            border-radius: 50%;
             width: 60px;
             height: 60px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1002;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
             animation: pulse 2s infinite;
+            text-decoration: none;
         }
+
         @keyframes pulse {
             0% { transform: scale(1); }
             70% { transform: scale(1.08); }
             100% { transform: scale(1); }
         }
-        .whatsapp-float svg { width: 34px; fill: white; }
+
+        .whatsapp-float svg {
+            width: 34px;
+            height: 34px;
+            fill: white;
+        }
+
+        /* Admin panel rows */
+        .admin-realisation-row {
+            background: #f9f9f9;
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e2e2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .admin-realisation-row input, .admin-realisation-row textarea {
+            flex: 1;
+            min-width: 140px;
+            padding: 8px 12px;
+            border-radius: 28px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 0.8rem;
+        }
+        .admin-realisation-row .row-remove {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .admin-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+        .btn-admin-save {
+            background: #e07a15;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-admin-cancel {
+            background: #6c757d;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-add-realisation {
+            background: #0a1a2f;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            border: none;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .admin-subtitle {
+            font-size: 0.8rem;
+            color: #5a6e7c;
+            margin-bottom: 20px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
 
 <nav class="navbar" id="navbar">
     <div class="container nav-inner">
-        <div class="logo"><img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'"></div>
-        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'">
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
         <div class="nav-links" id="navLinks">
-            <a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#realisations">Réalisations</a><a href="#devis" class="nav-btn">Devis</a>
+            <a href="#accueil">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#realisations">Réalisations</a>
+            <a href="#devis" class="nav-btn">Devis</a>
         </div>
     </div>
 </nav>
 
-<a href="https://wa.me/21620961180?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20des%20cr%C3%A9ations%20print" class="whatsapp-float" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.248 2.544 11.456c-.002 1.675.438 3.313 1.276 4.75L2 22l5.886-1.545c1.389.756 2.963 1.156 4.57 1.156h.004c5.204 0 9.456-4.25 9.46-9.458.002-2.523-.98-4.894-2.759-6.673zM12.01 19.916h-.003c-1.43 0-2.83-.383-4.041-1.106l-.29-.173-3.492.915.932-3.398-.188-.3a8.122 8.122 0 0 1-1.182-4.35c.004-4.48 3.648-8.122 8.132-8.122 2.17.002 4.208.846 5.742 2.38a8.08 8.08 0 0 1 2.379 5.756c-.004 4.484-3.648 8.128-8.129 8.128zm4.457-6.086c-.245-.123-1.449-.715-1.674-.796-.224-.082-.387-.123-.55.123-.164.246-.635.796-.778.96-.143.164-.286.184-.531.062-.245-.123-1.035-.382-1.97-1.216-.728-.65-1.219-1.452-1.362-1.697-.143-.245-.015-.378.107-.5.11-.11.245-.287.368-.43.122-.144.163-.246.245-.41.082-.164.041-.307-.02-.43-.062-.123-.55-1.322-.753-1.81-.198-.474-.4-.41-.55-.418-.143-.008-.306-.01-.47-.01-.163 0-.428.06-.652.306-.224.246-.857.838-.857 2.043 0 1.205.877 2.37 1 2.534.123.164 1.727 2.638 4.185 3.698.585.252 1.042.402 1.398.515.587.187 1.12.16 1.543.097.47-.07 1.449-.592 1.653-1.163.204-.57.204-1.058.143-1.16-.06-.102-.224-.164-.47-.287z"/></svg>
+<a href="https://wa.me/21620961180?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20des%20cr%C3%A9ations%20print%20(flyers%2C%20cartes%20de%20visite...)" 
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.248 2.544 11.456c-.002 1.675.438 3.313 1.276 4.75L2 22l5.886-1.545c1.389.756 2.963 1.156 4.57 1.156h.004c5.204 0 9.456-4.25 9.46-9.458.002-2.523-.98-4.894-2.759-6.673zM12.01 19.916h-.003c-1.43 0-2.83-.383-4.041-1.106l-.29-.173-3.492.915.932-3.398-.188-.3a8.122 8.122 0 0 1-1.182-4.35c.004-4.48 3.648-8.122 8.132-8.122 2.17.002 4.208.846 5.742 2.38a8.08 8.08 0 0 1 2.379 5.756c-.004 4.484-3.648 8.128-8.129 8.128zm4.457-6.086c-.245-.123-1.449-.715-1.674-.796-.224-.082-.387-.123-.55.123-.164.246-.635.796-.778.96-.143.164-.286.184-.531.062-.245-.123-1.035-.382-1.97-1.216-.728-.65-1.219-1.452-1.362-1.697-.143-.245-.015-.378.107-.5.11-.11.245-.287.368-.43.122-.144.163-.246.245-.41.082-.164.041-.307-.02-.43-.062-.123-.55-1.322-.753-1.81-.198-.474-.4-.41-.55-.418-.143-.008-.306-.01-.47-.01-.163 0-.428.06-.652.306-.224.246-.857.838-.857 2.043 0 1.205.877 2.37 1 2.534.123.164 1.727 2.638 4.185 3.698.585.252 1.042.402 1.398.515.587.187 1.12.16 1.543.097.47-.07 1.449-.592 1.653-1.163.204-.57.204-1.058.143-1.16-.06-.102-.224-.164-.47-.287z"/>
+    </svg>
 </a>
 
 <main>
@@ -517,302 +924,321 @@
             <div class="hero-content">
                 <span class="hero-tag">TUNISIE · CRÉATION PRINT PREMIUM</span>
                 <h1>Flyers, cartes de visite <span class="orange">et design sur mesure</span></h1>
-                <p class="hero-desc">Agence créative basée en Tunisie, nous concevons des supports graphiques percutants : flyers, cartes de visite, brochures.</p>
+                <p class="hero-desc">Agence créative basée en Tunisie, nous concevons des supports graphiques percutants : flyers, cartes de visite, brochures. Un mélange d'audace et d'élégance pour votre marque.</p>
                 <button class="btn-primary" id="exploreBtn">Découvrir nos prestations</button>
-                <div class="hero-stats"><div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Projets livrés</div></div><div class="stat-item"><div class="stat-number">96%</div><div class="stat-label">Clients satisfaits</div></div><div class="stat-item"><div class="stat-number">24h</div><div class="stat-label">Réponse devis</div></div></div>
+                <div class="hero-stats">
+                    <div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Projets livrés</div></div>
+                    <div class="stat-item"><div class="stat-number">96%</div><div class="stat-label">Clients satisfaits</div></div>
+                    <div class="stat-item"><div class="stat-number">24h</div><div class="stat-label">Réponse devis</div></div>
+                </div>
             </div>
-            <div class="hero-visual"><div class="card-float"><div class="card-float-inner"><h4>Carte de visite</h4><div class="line" style="width:40px;height:2px;background:#e07a15;margin:12px auto;"></div><p>finition mate · touches cuivrées</p></div></div><div class="card-float-2"><div class="card-float-inner" style="padding:16px;"><h4>Flyer A5</h4><div class="line" style="width:40px;height:2px;background:#e07a15;margin:12px auto;"></div><p>design signature</p></div></div></div>
+            <div class="hero-visual">
+                <div class="card-float"><div class="card-float-inner"><h4>Carte de visite</h4><div class="line"></div><p>finition mate · touches cuivrées</p></div></div>
+                <div class="card-float-2"><div class="card-float-inner" style="padding: 16px;"><h4>Flyer A5</h4><div class="line"></div><p>design signature</p></div></div>
+            </div>
         </div>
     </section>
 
-    <section class="section" id="services"><div class="container"><h2 class="section-title">Notre savoir-faire</h2><p class="section-sub">Des prestations print haut de gamme pour une identité visuelle forte.</p><div class="services-grid"><div class="service-card"><div class="service-number">01</div><h3>Cartes de visite</h3><p>Design moderne, papier luxe, finitions sélectives.</p></div><div class="service-card"><div class="service-number">02</div><h3>Flyers & dépliants</h3><p>Formats A6, A5, carré. Créations percutantes.</p></div><div class="service-card"><div class="service-number">03</div><h3>Branding & Papeterie</h3><p>Logos, en-têtes, packaging. Identité cohérente.</p></div><div class="service-card"><div class="service-number">04</div><h3>Impression premium</h3><p>Offset, numérique, dorure, vernis UV.</p></div></div></div></section>
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Notre savoir-faire</h2>
+            <p class="section-sub">Des prestations print haut de gamme pour une identité visuelle forte et professionnelle.</p>
+            <div class="services-grid">
+                <div class="service-card" data-delay="0"><div class="service-number">01</div><h3>Cartes de visite</h3><p>Design moderne, papier luxe, finitions sélectives. Une carte qui laisse une empreinte durable.</p></div>
+                <div class="service-card" data-delay="1"><div class="service-number">02</div><h3>Flyers & dépliants</h3><p>Formats A6, A5, carré. Créations percutantes pour vos événements et promotions.</p></div>
+                <div class="service-card" data-delay="2"><div class="service-number">03</div><h3>Branding & Papeterie</h3><p>Logos, en-têtes, packaging. Une identité cohérente qui renforce votre marque.</p></div>
+                <div class="service-card" data-delay="3"><div class="service-number">04</div><h3>Impression premium</h3><p>Offset, numérique, dorure, vernis UV. Qualité professionnelle en Tunisie.</p></div>
+            </div>
+        </div>
+    </section>
 
-    <section class="realisations-section" id="realisations"><div class="container"><h2 class="section-title">Dernières réalisations</h2><p class="section-sub">Cliquez sur une réalisation pour voir toutes les images.</p><div id="realisationsGrid" class="realisations-grid"></div><div id="paginationControls" class="pagination"></div></div></section>
+    <section class="realisations-section" id="realisations">
+        <div class="container">
+            <h2 class="section-title">Dernières réalisations</h2>
+            <p class="section-sub">Des projets récents qui reflètent notre exigence et notre créativité.</p>
+            <div class="realisations-grid" id="realisationsGrid"></div>
+            <div class="pagination" id="paginationControls"></div>
+        </div>
+    </section>
 
-    <div class="container" id="devis"><div class="cta-section"><div class="cta-inner"><div class="cta-line" style="width:50px;height:3px;background:#e07a15;margin:0 auto 20px;"></div><h2>Un projet de flyers ou cartes de visite ?</h2><p>Contactez-nous, on vous répond sous 24h avec une maquette offerte.</p><button class="btn-cta" id="openModalBtn">Demander un devis</button></div></div></div>
+    <div class="container" id="devis">
+        <div class="cta-section">
+            <div class="cta-inner">
+                <div class="cta-line"></div>
+                <h2>Un projet de flyers ou cartes de visite ?</h2>
+                <p>Contactez-nous, on vous répond sous 24h avec une maquette offerte et un devis transparent.</p>
+                <button class="btn-cta" id="openModalBtn">Demander un devis</button>
+            </div>
+        </div>
+    </div>
 </main>
 
-<footer><div class="container"><div class="footer-content"><div class="footer-brand"><img src="logo.png" alt="Logo" style="width:130px;" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'"><p>Agence créative spécialisée dans le print et l'identité visuelle.</p></div><div class="footer-col"><h4>Navigation</h4><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#realisations">Réalisations</a><a href="#devis">Devis</a></div><div class="footer-col"><h4>Contact</h4><p>Tunis</p><p>khproductiondesign@gmail.com</p><p>+216 20 961 180</p></div></div><div class="footer-bottom"><p>© 2026 PROD DESIGN STUDIO · Tunisie · Création flyers, cartes de visite</p></div></div></footer>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="logo"><img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'"></div><p>Agence créative spécialisée dans le print et l'identité visuelle. Basée à Tunis, nous accompagnons les marques avec élégance et précision.</p></div>
+            <div class="footer-links-column"><div class="footer-col"><h4>Navigation</h4><a href="#accueil">Accueil</a><a href="#services">Services</a><a href="#realisations">Réalisations</a><a href="#devis">Devis</a></div><div class="footer-col"><h4>Contact</h4><p>Tunis </p><p>khproductiondesign@gmail.com</p><p>+216 20 961 180</p></div><div class="footer-col"><h4>Suivez-nous</h4><a href="https://www.instagram.com/kh_productionesign/">Instagram</a><a href="#">Facebook</a><a href="https://www.behance.net/khproduct1">Behance</a></div></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 PROD DESIGN STUDIO · Tunisie · Création flyers, cartes de visite et identité visuelle</p></div>
+    </div>
+</footer>
 
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox"><button class="lightbox-close" id="closeLightbox">&times;</button><div class="lightbox-content"><img id="lightboxImg" class="lightbox-img" src=""></div><div class="lightbox-nav"><button id="prevImage">◀ Précédent</button><button id="nextImage">Suivant ▶</button></div><div class="lightbox-caption" id="lightboxCaption"></div></div>
+<!-- MODAL DEVIS -->
+<div class="modal" id="devisModal">
+    <div class="modal-content">
+        <div class="modal-close" id="closeModalBtn">&times;</div>
+        <h3>Demande de devis</h3>
+        <p class="sub">Remplissez le formulaire, réponse sous 24 heures.</p>
+        <form id="devisForm"><div class="form-group"><label>Nom complet</label><input type="text" placeholder="Votre nom et prénom" required id="fullName"></div><div class="form-group"><label>Email professionnel</label><input type="email" placeholder="exemple@domaine.com" required id="emailAddress"></div><div class="form-group"><label>Type de support</label><select id="projectType"><option>Flyers & dépliants</option><option>Cartes de visite</option><option>Pack identité complet</option><option>Autre support print</option></select></div><div class="form-group"><label>Message (optionnel)</label><textarea rows="3" placeholder="Détails de votre projet..." id="projectMessage"></textarea></div><button type="submit" class="modal-btn">Envoyer la demande via WhatsApp</button></form>
+        <p style="margin-top: 20px; font-size: 0.7rem; text-align: center;">Sans engagement · Devis personnalisé</p>
+    </div>
+</div>
 
-<!-- Modal Devis (simple) -->
-<div id="devisModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:2000;justify-content:center;align-items:center;"><div style="background:white;border-radius:32px;max-width:500px;width:90%;padding:30px;"><h3>Demande de devis</h3><form id="devisForm"><input type="text" id="fullName" placeholder="Nom complet" required style="width:100%;padding:12px;margin-bottom:12px;border-radius:28px;border:1px solid #ccc;"><input type="email" id="emailAddress" placeholder="Email" required style="width:100%;padding:12px;margin-bottom:12px;border-radius:28px;border:1px solid #ccc;"><select id="projectType" style="width:100%;padding:12px;margin-bottom:12px;"><option>Flyers & dépliants</option><option>Cartes de visite</option><option>Pack identité</option></select><textarea id="projectMessage" rows="3" placeholder="Message" style="width:100%;padding:12px;border-radius:28px;"></textarea><button type="submit" class="btn-cta" style="width:100%;margin-top:12px;">Envoyer sur WhatsApp</button></form><button id="closeModalBtn" style="margin-top:16px;background:#ccc;border:none;padding:8px;border-radius:40px;width:100%;">Fermer</button></div></div>
-
-<!-- Admin Panel (tapez "khalil") -->
-<div id="adminModal" class="admin-modal"><div class="admin-modal-content"><div style="display:flex;justify-content:space-between;"><h3>✏️ Administration des réalisations</h3><button id="closeAdminBtn" style="background:none;border:none;font-size:1.8rem;cursor:pointer;">&times;</button></div><p>Chaque réalisation peut avoir plusieurs images (upload multiple).</p><div id="adminRealisationsList"></div><button id="addNewRealisationBtn" class="btn-add-realisation">+ Ajouter une réalisation</button><div class="admin-actions"><button id="saveAdminBtn" class="btn-save">💾 Sauvegarder</button><button id="cancelAdminBtn" class="btn-cancel">Annuler</button></div></div></div>
+<!-- ADMIN PANEL -->
+<div class="admin-modal" id="adminModal">
+    <div class="admin-modal-content">
+        <div class="modal-close" id="closeAdminModalBtn">&times;</div>
+        <h3>✏️ Panneau d'administration</h3>
+        <p class="admin-subtitle">Modifier / ajouter des réalisations (image, lien, catégorie, titre, description).</p>
+        <div id="adminRealisationsList"></div>
+        <button class="btn-add-realisation" id="addNewAdminRowBtn">+ Ajouter une réalisation</button>
+        <div class="admin-actions">
+            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder</button>
+            <button class="btn-admin-cancel" id="cancelAdminBtn">Annuler</button>
+        </div>
+    </div>
+</div>
 
 <script>
-    // ---------- DONNÉES ----------
-    let realisations = [];
+    // ---------- DONNÉES AVEC IMAGES ET LIENS ----------
+    const DEFAULT_REALISATIONS = [
+        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé", imageUrl: "https://placehold.co/400x300/0a1a2f/e07a15?text=Carte+Visite", linkUrl: "" },
+        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025", imageUrl: "https://placehold.co/400x300/e07a15/white?text=Flyer+A5", linkUrl: "" },
+        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète", imageUrl: "https://placehold.co/400x300/2c3e50/e07a15?text=Pack+Identite", linkUrl: "https://www.behance.net/khproduct1" },
+        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages", imageUrl: "https://placehold.co/400x300/5a6e7c/e07a15?text=Brochure", linkUrl: "" },
+        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif", imageUrl: "https://placehold.co/400x300/0a1a2f/white?text=Affiche", linkUrl: "" },
+        { category: "Carte de visite", title: "Luxe & Co", desc: "Dorure à chaud", imageUrl: "https://placehold.co/400x300/c49a6c/0a1a2f?text=Luxe+Co", linkUrl: "https://www.instagram.com/kh_productionesign/" }
+    ];
+
+    let realisationsData = [];
     let currentPage = 1;
-    const itemsPerPage = 3; // Pagination 3 par page
+    const itemsPerPage = 5;
 
-    // Lightbox state
-    let currentLightboxImages = [];
-    let currentLightboxIndex = 0;
-
-    // Chargement depuis localStorage
-    function loadData() {
-        const stored = localStorage.getItem("proddesign_realisations_multi");
+    function loadRealisationsData() {
+        const stored = localStorage.getItem("proddesign_realisations_advanced");
         if (stored) {
-            realisations = JSON.parse(stored);
+            try {
+                realisationsData = JSON.parse(stored);
+                if (!Array.isArray(realisationsData) || realisationsData.length === 0) realisationsData = [...DEFAULT_REALISATIONS];
+            } catch(e) { realisationsData = [...DEFAULT_REALISATIONS]; }
         } else {
-            // Défaut avec quelques exemples (images placeholder)
-            realisations = [
-                { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé", images: ["https://placehold.co/600x400/0a1a2f/e07a15?text=Carte+1","https://placehold.co/600x400/2c3e50/white?text=Carte+2"] },
-                { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025", images: ["https://placehold.co/600x400/e07a15/white?text=Flyer+1"] },
-                { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète", images: ["https://placehold.co/600x400/0a1a2f/white?text=Pack"] },
-                { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages", images: ["https://placehold.co/600x400/5a6e7c/white?text=Brochure"] },
-                { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif", images: ["https://placehold.co/600x400/0a1a2f/e07a15?text=Affiche"] }
-            ];
+            realisationsData = [...DEFAULT_REALISATIONS];
         }
     }
 
-    function saveData() {
-        localStorage.setItem("proddesign_realisations_multi", JSON.stringify(realisations));
+    function saveRealisationsToLocal() {
+        localStorage.setItem("proddesign_realisations_advanced", JSON.stringify(realisationsData));
     }
 
-    // Afficher les réalisations avec pagination
+    // Rendu avec pagination
     function renderRealisations() {
-        const container = document.getElementById("realisationsGrid");
-        if (!container) return;
+        const grid = document.getElementById("realisationsGrid");
+        if (!grid) return;
         const start = (currentPage - 1) * itemsPerPage;
-        const paginated = realisations.slice(start, start + itemsPerPage);
-        container.innerHTML = "";
-        paginated.forEach((item, idx) => {
+        const end = start + itemsPerPage;
+        const paginatedItems = realisationsData.slice(start, end);
+        
+        grid.innerHTML = "";
+        paginatedItems.forEach((item) => {
             const card = document.createElement("div");
             card.className = "realisation-item";
-            const firstImage = (item.images && item.images.length > 0) ? item.images[0] : "https://placehold.co/400x300/d4d4d4/0a1a2f?text=No+image";
+            const imgUrl = item.imageUrl && item.imageUrl.trim() !== "" ? item.imageUrl : "https://placehold.co/400x300/d4d4d4/0a1a2f?text=Image+manquante";
+            const hasLink = item.linkUrl && item.linkUrl.trim() !== "";
             card.innerHTML = `
-                <img class="realisation-image" src="${escapeHtml(firstImage)}" alt="${escapeHtml(item.title)}" onerror="this.src='https://placehold.co/400x300/d4d4d4/0a1a2f?text=Erreur'">
+                <img class="realisation-image" src="${escapeHtml(imgUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://placehold.co/400x300/d4d4d4/0a1a2f?text=Erreur+Image'">
                 <div class="realisation-category">${escapeHtml(item.category)}</div>
                 <h4>${escapeHtml(item.title)}</h4>
-                <div class="realisation-desc">${escapeHtml(item.desc)}</div>
-                <div class="badge-images">${item.images?.length || 0} image(s)</div>
+                <p>${escapeHtml(item.desc)}</p>
+                <div class="realisation-divider"></div>
+                ${hasLink ? `<a href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer" class="realisation-link">Voir le projet →</a>` : ''}
             `;
-            card.addEventListener("click", (e) => {
-                e.stopPropagation();
-                openLightbox(item.images || [], item.title);
-            });
-            container.appendChild(card);
+            grid.appendChild(card);
         });
         renderPagination();
         // Animation
-        document.querySelectorAll(".realisation-item").forEach((el, i) => {
+        document.querySelectorAll("#realisationsGrid .realisation-item").forEach((el, i) => {
             el.style.opacity = "0";
-            setTimeout(() => { el.style.animation = "fadeUp 0.4s ease forwards"; el.style.opacity = "1"; }, i * 80);
+            setTimeout(() => {
+                el.style.animation = "fadeUp 0.4s ease forwards";
+                el.style.opacity = "1";
+            }, i * 80);
         });
     }
 
     function renderPagination() {
-        const totalPages = Math.ceil(realisations.length / itemsPerPage);
+        const totalPages = Math.ceil(realisationsData.length / itemsPerPage);
         const pagContainer = document.getElementById("paginationControls");
         if (!pagContainer) return;
         if (totalPages <= 1) { pagContainer.innerHTML = ""; return; }
-        let html = `<button class="page-prev" ${currentPage === 1 ? "disabled" : ""}>◀ Précédent</button>`;
+        let html = `<button class="page-prev" ${currentPage === 1 ? 'disabled' : ''}>‹ Précédent</button>`;
         for (let i = 1; i <= totalPages; i++) {
-            html += `<button class="page-num ${i === currentPage ? "active" : ""}" data-page="${i}">${i}</button>`;
+            html += `<button class="page-num ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
         }
-        html += `<button class="page-next" ${currentPage === totalPages ? "disabled" : ""}>Suivant ▶</button>`;
+        html += `<button class="page-next" ${currentPage === totalPages ? 'disabled' : ''}>Suivant ›</button>`;
         pagContainer.innerHTML = html;
-        document.querySelectorAll(".page-prev").forEach(btn => btn.addEventListener("click", () => { if(currentPage>1){ currentPage--; renderRealisations(); } }));
-        document.querySelectorAll(".page-next").forEach(btn => btn.addEventListener("click", () => { if(currentPage<totalPages){ currentPage++; renderRealisations(); } }));
-        document.querySelectorAll(".page-num").forEach(btn => btn.addEventListener("click", (e) => { currentPage = parseInt(e.target.dataset.page); renderRealisations(); }));
+        // events
+        pagContainer.querySelectorAll(".page-prev").forEach(btn => btn.addEventListener("click", () => { if(currentPage > 1) { currentPage--; renderRealisations(); } }));
+        pagContainer.querySelectorAll(".page-next").forEach(btn => btn.addEventListener("click", () => { if(currentPage < totalPages) { currentPage++; renderRealisations(); } }));
+        pagContainer.querySelectorAll(".page-num").forEach(btn => btn.addEventListener("click", (e) => { currentPage = parseInt(e.target.dataset.page); renderRealisations(); }));
     }
 
-    function openLightbox(images, title) {
-        if (!images || images.length === 0) return;
-        currentLightboxImages = images;
-        currentLightboxIndex = 0;
-        document.getElementById("lightboxImg").src = images[0];
-        document.getElementById("lightboxCaption").innerText = `${title} - Image 1/${images.length}`;
-        document.getElementById("lightbox").classList.add("active");
+    function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    function refreshRealisations() {
+        saveRealisationsToLocal();
+        renderRealisations();
     }
 
-    function closeLightbox() { document.getElementById("lightbox").classList.remove("active"); }
-    function nextImage() {
-        if (currentLightboxImages.length === 0) return;
-        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
-        document.getElementById("lightboxImg").src = currentLightboxImages[currentLightboxIndex];
-        document.getElementById("lightboxCaption").innerText = `Image ${currentLightboxIndex+1}/${currentLightboxImages.length}`;
-    }
-    function prevImage() {
-        if (currentLightboxImages.length === 0) return;
-        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
-        document.getElementById("lightboxImg").src = currentLightboxImages[currentLightboxIndex];
-        document.getElementById("lightboxCaption").innerText = `Image ${currentLightboxIndex+1}/${currentLightboxImages.length}`;
-    }
+    // ADMIN PANEL AVEC GESTION IMAGE + LIEN
+    let currentEditData = [];
+    const adminModal = document.getElementById("adminModal");
+    const adminListContainer = document.getElementById("adminRealisationsList");
 
-    // ADMIN PANEL (gestion multi-images avec upload)
-    let editingRealisations = [];
     function buildAdminForm() {
-        const container = document.getElementById("adminRealisationsList");
-        container.innerHTML = "";
-        editingRealisations.forEach((item, idx) => {
+        adminListContainer.innerHTML = "";
+        currentEditData.forEach((item, idx) => {
             const row = document.createElement("div");
             row.className = "admin-realisation-row";
-            row.dataset.idx = idx;
-            // Affichage des images existantes
-            let imagesHtml = "";
-            if (item.images && item.images.length) {
-                imagesHtml = `<div class="images-upload-area" id="imgArea-${idx}">`;
-                item.images.forEach((img, imgIdx) => {
-                    imagesHtml += `<img src="${escapeHtml(img)}" class="image-preview" data-imgidx="${imgIdx}"> `;
-                });
-                imagesHtml += `</div>`;
-            }
+            row.dataset.index = idx;
             row.innerHTML = `
-                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie">
-                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre">
-                <textarea class="admin-desc" rows="2" placeholder="Description">${escapeHtml(item.desc)}</textarea>
-                <div>
-                    <label>Ajouter des images (sélection multiple) :</label>
-                    <input type="file" class="admin-file-input" multiple accept="image/*" data-idx="${idx}">
-                </div>
-                <div id="preview-${idx}">${imagesHtml}</div>
-                <button class="row-remove" data-idx="${idx}" style="background:#dc2626;color:white;padding:6px 16px;border-radius:40px;border:none;margin-top:8px;">Supprimer cette réalisation</button>
+                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie" style="min-width:100px">
+                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="min-width:120px">
+                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="min-width:140px">
+                <input type="text" class="admin-image" value="${escapeHtml(item.imageUrl || '')}" placeholder="URL de l'image" style="min-width:180px">
+                <input type="text" class="admin-link" value="${escapeHtml(item.linkUrl || '')}" placeholder="Lien (optionnel)" style="min-width:150px">
+                <button class="row-remove" data-idx="${idx}">Supprimer</button>
             `;
-            container.appendChild(row);
-            // Gestion upload pour cette ligne
-            const fileInput = row.querySelector(".admin-file-input");
-            fileInput.addEventListener("change", (e) => {
-                const files = Array.from(e.target.files);
-                const newImages = [];
-                let loaded = 0;
-                files.forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = (ev) => {
-                        newImages.push(ev.target.result);
-                        loaded++;
-                        if (loaded === files.length) {
-                            // Ajouter aux images existantes
-                            if (!editingRealisations[idx].images) editingRealisations[idx].images = [];
-                            editingRealisations[idx].images.push(...newImages);
-                            // Rafraîchir la préview
-                            const previewDiv = document.getElementById(`preview-${idx}`);
-                            if (previewDiv) {
-                                previewDiv.innerHTML = `<div class="images-upload-area">${editingRealisations[idx].images.map(img => `<img src="${escapeHtml(img)}" class="image-preview">`).join('')}</div>`;
-                            }
-                        }
-                    };
-                    reader.readAsDataURL(file);
-                });
-            });
+            adminListContainer.appendChild(row);
         });
-        // Boutons supprimer
         document.querySelectorAll(".row-remove").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = parseInt(btn.getAttribute("data-idx"));
-                editingRealisations.splice(idx, 1);
-                buildAdminForm();
+                if (!isNaN(idx)) {
+                    currentEditData.splice(idx, 1);
+                    buildAdminForm();
+                }
             });
         });
     }
 
     function openAdminPanel() {
-        editingRealisations = JSON.parse(JSON.stringify(realisations));
+        currentEditData = realisationsData.map(r => ({ ...r }));
         buildAdminForm();
-        document.getElementById("adminModal").style.display = "flex";
+        adminModal.style.display = "flex";
         document.body.style.overflow = "hidden";
     }
+
     function closeAdminPanel() {
-        document.getElementById("adminModal").style.display = "none";
+        adminModal.style.display = "none";
         document.body.style.overflow = "";
     }
-    function saveAdminData() {
+
+    function saveAdminChanges() {
         const rows = document.querySelectorAll("#adminRealisationsList .admin-realisation-row");
         const newData = [];
         rows.forEach(row => {
             const cat = row.querySelector(".admin-cat")?.value.trim() || "Nouveau";
             const title = row.querySelector(".admin-title")?.value.trim() || "Projet";
             const desc = row.querySelector(".admin-desc")?.value.trim() || "";
-            // les images sont déjà dans editingRealisations, mais on doit les récupérer depuis l'objet modifié
-            const idx = parseInt(row.dataset.idx);
-            let images = (editingRealisations[idx] && editingRealisations[idx].images) ? editingRealisations[idx].images : [];
-            newData.push({ category: cat, title: title, desc: desc, images: images });
+            const image = row.querySelector(".admin-image")?.value.trim() || "";
+            const link = row.querySelector(".admin-link")?.value.trim() || "";
+            newData.push({ category: cat, title: title, desc: desc, imageUrl: image, linkUrl: link });
         });
-        if (newData.length === 0) { alert("Ajoutez au moins une réalisation"); return; }
-        realisations = newData;
-        saveData();
-        // Reset page
-        currentPage = 1;
-        renderRealisations();
+        if (newData.length === 0) { alert("Ajoutez au moins une réalisation."); return; }
+        realisationsData = newData;
+        if (currentPage > Math.ceil(realisationsData.length / itemsPerPage)) currentPage = 1;
+        refreshRealisations();
         closeAdminPanel();
     }
-    function addEmptyRealisation() {
-        editingRealisations.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description", images: [] });
+
+    function addEmptyAdminRow() {
+        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description", imageUrl: "", linkUrl: "" });
         buildAdminForm();
     }
 
-    // Event listeners
-    function init() {
-        loadData();
-        renderRealisations();
-
-        // Lightbox events
-        document.getElementById("closeLightbox")?.addEventListener("click", closeLightbox);
-        document.getElementById("nextImage")?.addEventListener("click", nextImage);
-        document.getElementById("prevImage")?.addEventListener("click", prevImage);
-        document.getElementById("lightbox")?.addEventListener("click", (e) => { if(e.target === document.getElementById("lightbox")) closeLightbox(); });
-
-        // Admin secret (khalil)
-        let keyBuffer = "";
-        window.addEventListener("keydown", (e) => {
-            const key = e.key.toLowerCase();
-            if (key.length === 1 && /[a-z0-9]/i.test(key)) {
-                keyBuffer = (keyBuffer + key).slice(-6);
-                if (keyBuffer === "khalil") {
-                    e.preventDefault();
-                    openAdminPanel();
-                    keyBuffer = "";
-                }
+    // CLAVIER "khalil"
+    let keyBuffer = "";
+    function onKeydownHandler(e) {
+        const key = e.key;
+        if (key.length === 1 && /[a-zA-Z0-9]/i.test(key)) {
+            keyBuffer = (keyBuffer + key.toLowerCase()).slice(-6);
+            if (keyBuffer === "khalil") {
+                e.preventDefault();
+                openAdminPanel();
+                keyBuffer = "";
             }
-            if (e.key === "Escape" && document.getElementById("adminModal").style.display === "flex") closeAdminPanel();
-        });
+        } else {
+            if (key === "Escape" && adminModal.style.display === "flex") closeAdminPanel();
+        }
+    }
+    window.addEventListener("keydown", onKeydownHandler);
 
-        document.getElementById("addNewRealisationBtn")?.addEventListener("click", addEmptyRealisation);
-        document.getElementById("saveAdminBtn")?.addEventListener("click", saveAdminData);
-        document.getElementById("cancelAdminBtn")?.addEventListener("click", closeAdminPanel);
-        document.getElementById("closeAdminBtn")?.addEventListener("click", closeAdminPanel);
-
-        // Devis modal
-        const devisModal = document.getElementById("devisModal");
-        const openModalBtn = document.getElementById("openModalBtn");
-        const closeModalBtn = document.getElementById("closeModalBtn");
-        openModalBtn?.addEventListener("click", () => { devisModal.style.display = "flex"; });
-        closeModalBtn?.addEventListener("click", () => { devisModal.style.display = "none"; });
-        document.getElementById("devisForm")?.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const name = document.getElementById("fullName").value;
-            const email = document.getElementById("emailAddress").value;
-            const type = document.getElementById("projectType").value;
-            const msg = document.getElementById("projectMessage").value;
-            if(!name || !email) { alert("Remplissez nom et email"); return; }
-            let waMsg = `Bonjour, je souhaite un devis.%0A%0ANom: ${name}%0AEmail: ${email}%0AType: ${type}%0AMessage: ${msg}`;
-            window.open(`https://wa.me/21620961180?text=${encodeURIComponent(waMsg)}`, "_blank");
-            devisModal.style.display = "none";
-        });
-
-        // Navbar mobile
-        const menuToggle = document.getElementById("menuToggle");
-        const navLinks = document.getElementById("navLinks");
-        menuToggle?.addEventListener("click", () => { navLinks.classList.toggle("active"); menuToggle.classList.toggle("active"); });
-        document.querySelectorAll(".nav-links a").forEach(link => link.addEventListener("click", () => { navLinks.classList.remove("active"); menuToggle.classList.remove("active"); }));
-        window.addEventListener("scroll", () => { document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50); });
-        document.getElementById("exploreBtn")?.addEventListener("click", () => { document.getElementById("services").scrollIntoView({ behavior: "smooth" }); });
-
-        // Animation services cards
+    // Initialisations
+    document.addEventListener("DOMContentLoaded", () => {
+        loadRealisationsData();
+        renderRealisations();
+        // Service cards animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("visible"); });
+            entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll(".service-card").forEach(card => observer.observe(card));
+        document.querySelectorAll(".stat-item").forEach((stat, idx) => { stat.style.opacity = "0"; setTimeout(() => { stat.style.animation = "fadeUp 0.5s ease forwards"; stat.style.opacity = "1"; }, 300 + idx * 100); });
+    });
+
+    // Navbar, menu, scroll
+    window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
+    const menuToggle = document.getElementById('menuToggle'), navLinks = document.getElementById('navLinks');
+    function closeMenu() { navLinks.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; }
+    function openMenu() { navLinks.classList.add('active'); menuToggle.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); navLinks.classList.contains('active') ? closeMenu() : openMenu(); });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => { if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) closeMenu(); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const target = document.querySelector(this.getAttribute('href')); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); closeMenu(); } }); });
+    document.getElementById('exploreBtn')?.addEventListener('click', () => { document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); });
+
+    // Modal devis
+    const devisModal = document.getElementById('devisModal');
+    const openDevisBtn = document.getElementById('openModalBtn');
+    const closeDevisBtn = document.getElementById('closeModalBtn');
+    function openDevisModal() { devisModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; closeMenu(); }
+    function closeDevisModal() { devisModal.style.display = 'none'; document.body.style.overflow = ''; }
+    if (openDevisBtn) openDevisBtn.addEventListener('click', openDevisModal);
+    if (closeDevisBtn) closeDevisBtn.addEventListener('click', closeDevisModal);
+    window.addEventListener('click', (e) => { if (e.target === devisModal) closeDevisModal(); if (e.target === adminModal) closeAdminPanel(); });
+    const devisForm = document.getElementById('devisForm');
+    if (devisForm) {
+        devisForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('emailAddress').value.trim();
+            const projectType = document.getElementById('projectType').value;
+            const message = document.getElementById('projectMessage').value.trim();
+            if (!name || !email || !email.includes('@')) { alert('Veuillez renseigner un nom et un email valide.'); return; }
+            let waMsg = ` *NOUVELLE DEMANDE DE DEVIS - PROD DESIGN* %0A%0A *Nom complet* : ${name}%0A*Email* : ${email}%0A*Type de support* : ${projectType}%0A*Date* : ${new Date().toLocaleDateString('fr-FR')}%0A%0A`;
+            if (message) waMsg += `*Détails du projet* :%0A${message}%0A%0A`; else waMsg += `*Détails* : À préciser lors de l'échange.%0A%0A`;
+            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé.%0A*PROD DESIGN - Création print Tunisie*`;
+            window.open(`https://wa.me/21620961180?text=${waMsg}`, '_blank');
+            alert(`Merci ${name} ! Redirection WhatsApp.`);
+            closeDevisModal();
+            devisForm.reset();
+        });
     }
 
-    function escapeHtml(str) { if(!str) return ""; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
-
-    init();
+    // Admin buttons
+    document.getElementById("closeAdminModalBtn")?.addEventListener("click", closeAdminPanel);
+    document.getElementById("saveAdminChangesBtn")?.addEventListener("click", saveAdminChanges);
+    document.getElementById("cancelAdminBtn")?.addEventListener("click", closeAdminPanel);
+    document.getElementById("addNewAdminRowBtn")?.addEventListener("click", addEmptyAdminRow);
 </script>
 </body>
 </html>
