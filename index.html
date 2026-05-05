@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Prod Design | Création graphique & Print - Tunisie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #e6e6e6;
+            color: #0a1a2f;
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary-dark: #0a1a2f;
+            --primary-accent: #e07a15;
+            --gray-light: #e6e6e6;
+            --gray-soft: #f2f2f2;
+            --white: #ffffff;
+            --gray-mid: #b0b0b0;
+            --gray-deep: #4a4a4a;
+            --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes float1 {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(-2deg); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.3s ease;
+            background: rgba(230, 230, 230, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(224, 122, 21, 0.15);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(230, 230, 230, 0.98);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-img {
+            width: 130px;
+            height: auto;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                width: 150px;
+            }
+        }
+
+        /* Menu hamburger pour mobile (propre) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 22px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 2.5px;
+            width: 100%;
+            background-color: #0a1a2f;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(9.5px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-9.5px) rotate(-45deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                gap: 36px;
+            }
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #0a1a2f;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+        }
+
+        .nav-links a:hover {
+            color: #e07a15;
+        }
+
+        .nav-btn {
+            background: #e07a15;
+            padding: 6px 20px;
+            border-radius: 40px;
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.25s;
+        }
+
+        @media (min-width: 768px) {
+            .nav-btn {
+                padding: 8px 28px;
+            }
+        }
+
+        .nav-btn:hover {
+            background: #c05f0c;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive mobile navbar */
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 280px;
+                height: 100vh;
+                background: rgba(10, 26, 47, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                transition: right 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                z-index: 999;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+                padding: 80px 24px;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                color: #ffffff;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(224, 122, 21, 0.3);
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+            }
+            .nav-btn {
+                background: #e07a15;
+                color: white !important;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        @media (min-width: 900px) {
+            .hero-grid {
+                flex-direction: row;
+                gap: 60px;
+            }
+        }
+
+        .hero-content {
+            flex: 1.2;
+            animation: slideInLeft 0.8s ease forwards;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(224, 122, 21, 0.12);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #e07a15;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-tag {
+                font-size: 0.75rem;
+                padding: 6px 20px;
+                margin-bottom: 28px;
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0a1a2f;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+        }
+
+        .hero-content h1 .orange {
+            color: #e07a15;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: #2c3e4e;
+            max-width: 100%;
+            margin-bottom: 28px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-desc {
+                font-size: 1.1rem;
+                max-width: 90%;
+                margin-bottom: 36px;
+            }
+        }
+
+        .btn-primary {
+            background: #e07a15;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 48px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .btn-primary {
+                padding: 14px 40px;
+                font-size: 0.95rem;
+                width: auto;
+            }
+        }
+
+        .btn-primary:hover {
+            background: #c05f0c;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -8px rgba(224, 122, 21, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .hero-stats {
+                gap: 48px;
+                margin-top: 52px;
+            }
+        }
+
+        .stat-item .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a1a2f;
+        }
+
+        @media (min-width: 768px) {
+            .stat-item .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.75rem;
+            color: #5a6e7c;
+            font-weight: 500;
+        }
+
+        @media (min-width: 768px) {
+            .stat-item .stat-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            min-height: 320px;
+            width: 100%;
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @media (min-width: 768px) {
+            .hero-visual {
+                min-height: 420px;
+            }
+        }
+
+        .card-float {
+            background: var(--white);
+            border-radius: 28px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(224, 122, 21, 0.2);
+            animation: float1 5s ease-in-out infinite;
+        }
+
+        @media (min-width: 768px) {
+            .card-float {
+                padding: 28px;
+                width: 270px;
+            }
+        }
+
+        .card-float-inner {
+            background: linear-gradient(145deg, #fcfcfc, #f5f5f5);
+            border-radius: 20px;
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid rgba(224, 122, 21, 0.15);
+        }
+
+        @media (min-width: 768px) {
+            .card-float-inner {
+                border-radius: 24px;
+                padding: 28px 20px;
+            }
+        }
+
+        .card-float-inner h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0a1a2f;
+        }
+
+        @media (min-width: 768px) {
+            .card-float-inner h4 {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+        }
+
+        .card-float-inner .line {
+            width: 40px;
+            height: 2px;
+            background: #e07a15;
+            margin: 12px auto;
+            border-radius: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .card-float-inner .line {
+                width: 50px;
+                margin: 16px auto 12px;
+            }
+        }
+
+        .card-float-inner p {
+            font-size: 0.65rem;
+            color: #5a6e7c;
+        }
+
+        @media (min-width: 768px) {
+            .card-float-inner p {
+                font-size: 0.7rem;
+            }
+        }
+
+        .card-float-2 {
+            position: absolute;
+            bottom: -20px;
+            right: 10px;
+            width: 180px;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(224, 122, 21, 0.2);
+            animation: float2 4.8s ease-in-out infinite;
+        }
+
+        @media (min-width: 768px) {
+            .card-float-2 {
+                bottom: -10px;
+                right: 20px;
+                width: 210px;
+                padding: 20px;
+                border-radius: 28px;
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 100px 0;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0a1a2f;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.6rem;
+                margin-bottom: 16px;
+            }
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #3a4f62;
+            max-width: 680px;
+            margin: 0 auto 40px;
+            font-size: 0.9rem;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 768px) {
+            .section-sub {
+                margin: 0 auto 56px;
+                font-size: 1rem;
+            }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 32px 20px;
+            border-radius: 28px;
+            transition: all 0.35s;
+            border: 1px solid #d4d4d4;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (min-width: 768px) {
+            .service-card {
+                padding: 40px 28px;
+                border-radius: 32px;
+            }
+        }
+
+        .service-card.visible {
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #e07a15;
+            box-shadow: 0 25px 35px -16px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #e07a15;
+            opacity: 0.5;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .service-number {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0a1a2f;
+        }
+
+        @media (min-width: 768px) {
+            .service-card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 14px;
+            }
+        }
+
+        .service-card p {
+            color: #4b5f6e;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .service-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Réalisations */
+        .realisations-section {
+            background: #f7f7f7;
+            border-radius: 32px;
+            margin: 20px 0;
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .realisations-section {
+                border-radius: 56px;
+                margin: 40px 0;
+                padding: 60px 0;
+            }
+        }
+
+        .realisations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .realisations-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .realisations-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 24px;
+                margin-top: 48px;
+            }
+        }
+
+        .realisation-item {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 24px 16px;
+            text-align: center;
+            border: 1px solid #d4d4d4;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (min-width: 768px) {
+            .realisation-item {
+                border-radius: 28px;
+                padding: 32px 20px;
+            }
+        }
+
+        .realisation-item:hover {
+            transform: translateY(-6px);
+            border-color: #e07a15;
+            box-shadow: var(--shadow-md);
+        }
+
+        .realisation-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #e07a15;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .realisation-category {
+                font-size: 0.7rem;
+                margin-bottom: 12px;
+            }
+        }
+
+        .realisation-item h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0a1a2f;
+            margin-bottom: 6px;
+        }
+
+        @media (min-width: 768px) {
+            .realisation-item h4 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+        }
+
+        .realisation-item p {
+            font-size: 0.7rem;
+            color: #5a6e7c;
+        }
+
+        @media (min-width: 768px) {
+            .realisation-item p {
+                font-size: 0.8rem;
+            }
+        }
+
+        .realisation-divider {
+            width: 30px;
+            height: 2px;
+            background: #e07a15;
+            margin: 12px auto 0;
+            opacity: 0.5;
+        }
+
+        @media (min-width: 768px) {
+            .realisation-divider {
+                width: 40px;
+                margin: 16px auto 0;
+            }
+        }
+
+        /* CTA */
+        .cta-section {
+            background: #0a1a2f;
+            border-radius: 32px;
+            margin: 20px 0 60px;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .cta-section {
+                border-radius: 56px;
+                margin: 40px 0 90px;
+            }
+        }
+
+        .cta-inner {
+            padding: 48px 24px;
+            text-align: center;
+            background: linear-gradient(135deg, #071225 0%, #10223b 100%);
+        }
+
+        @media (min-width: 768px) {
+            .cta-inner {
+                padding: 72px 60px;
+            }
+        }
+
+        .cta-line {
+            width: 50px;
+            height: 3px;
+            background: #e07a15;
+            margin: 0 auto 20px;
+            border-radius: 3px;
+        }
+
+        @media (min-width: 768px) {
+            .cta-line {
+                width: 70px;
+                margin: 0 auto 28px;
+            }
+        }
+
+        .cta-inner h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 768px) {
+            .cta-inner h2 {
+                font-size: 2.3rem;
+                margin-bottom: 18px;
+            }
+        }
+
+        .cta-inner p {
+            color: #cbd5e1;
+            max-width: 520px;
+            margin: 0 auto 28px;
+            font-size: 0.9rem;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 768px) {
+            .cta-inner p {
+                margin: 0 auto 36px;
+                font-size: 1rem;
+            }
+        }
+
+        .btn-cta {
+            background: #e07a15;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 48px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: 'Space Grotesk', sans-serif;
+            width: 90%;
+            max-width: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .btn-cta {
+                padding: 16px 48px;
+                font-size: 1rem;
+                width: auto;
+            }
+        }
+
+        .btn-cta:hover {
+            background: #c05f0c;
+            transform: scale(1.02);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            border-top: 1px solid rgba(10, 26, 47, 0.1);
+            padding: 40px 0 32px;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 56px 0 40px;
+            }
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                gap: 48px;
+                margin-bottom: 48px;
+            }
+        }
+
+        .footer-brand .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0a1a2f 0%, #e07a15 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
+        }
+
+        .footer-brand p {
+            color: #5a6e7c;
+            font-size: 0.8rem;
+            max-width: 260px;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand p {
+                font-size: 0.85rem;
+            }
+        }
+
+        .footer-links-column {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links-column {
+                gap: 64px;
+            }
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0a1a2f;
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-col h4 {
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+            }
+        }
+
+        .footer-col a, .footer-col p {
+            display: block;
+            text-decoration: none;
+            color: #5a6e7c;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        @media (min-width: 768px) {
+            .footer-col a, .footer-col p {
+                font-size: 0.85rem;
+                margin-bottom: 12px;
+            }
+        }
+
+        .footer-col a:hover {
+            color: #e07a15;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #e0e0e0;
+            color: #8a9aaa;
+            font-size: 0.7rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                padding-top: 32px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 32px;
+            max-width: 520px;
+            width: 100%;
+            padding: 32px 24px;
+            position: relative;
+            animation: fadeUp 0.3s;
+            border-top: 4px solid #e07a15;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                border-radius: 44px;
+                padding: 44px;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #aaa;
+            transition: 0.2s;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        @media (min-width: 768px) {
+            .modal-close {
+                right: 28px;
+                top: 24px;
+                font-size: 2rem;
+            }
+        }
+
+        .modal-close:hover {
+            color: #e07a15;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0a1a2f;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .modal-content .sub {
+            color: #5a6e7c;
+            margin-bottom: 24px;
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content .sub {
+                margin-bottom: 32px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .form-group {
+                margin-bottom: 22px;
+            }
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 28px;
+            border: 1px solid #d4d4d4;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            background: #fafafa;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+        }
+
+        @media (min-width: 768px) {
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e07a15;
+            background: white;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #0a1a2f;
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-group label {
+                margin-bottom: 8px;
+                font-size: 0.85rem;
+            }
+        }
+
+        .modal-btn {
+            background: #e07a15;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        @media (min-width: 768px) {
+            .modal-btn {
+                padding: 15px;
+                font-size: 0.95rem;
+                margin-top: 10px;
+            }
+        }
+
+        .modal-btn:hover {
+            background: #c05f0c;
+        }
+
+        /* Bouton flottant WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: #25D366;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+            70% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5); }
+            100% { transform: scale(1); box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b859;
+        }
+
+        .whatsapp-float svg {
+            width: 34px;
+            height: 34px;
+            fill: white;
+        }
+
+        @media (min-width: 768px) {
+            .whatsapp-float {
+                width: 70px;
+                height: 70px;
+                bottom: 30px;
+                right: 30px;
+            }
+            .whatsapp-float svg {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        button, .nav-btn, .btn-cta, .modal-btn {
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'">
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#accueil">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#realisations">Réalisations</a>
+            <a href="#devis" class="nav-btn">Devis</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Bouton flottant WhatsApp avec numéro corrigé -->
+<a href="https://wa.me/21620961180?text=Bonjour%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20des%20cr%C3%A9ations%20print%20(flyers%2C%20cartes%20de%20visite...)" 
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer" id="whatsappBtn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.077 4.928C17.191 3.041 14.683 2 12.006 2 6.798 2 2.548 6.248 2.544 11.456c-.002 1.675.438 3.313 1.276 4.75L2 22l5.886-1.545c1.389.756 2.963 1.156 4.57 1.156h.004c5.204 0 9.456-4.25 9.46-9.458.002-2.523-.98-4.894-2.759-6.673zM12.01 19.916h-.003c-1.43 0-2.83-.383-4.041-1.106l-.29-.173-3.492.915.932-3.398-.188-.3a8.122 8.122 0 0 1-1.182-4.35c.004-4.48 3.648-8.122 8.132-8.122 2.17.002 4.208.846 5.742 2.38a8.08 8.08 0 0 1 2.379 5.756c-.004 4.484-3.648 8.128-8.129 8.128zm4.457-6.086c-.245-.123-1.449-.715-1.674-.796-.224-.082-.387-.123-.55.123-.164.246-.635.796-.778.96-.143.164-.286.184-.531.062-.245-.123-1.035-.382-1.97-1.216-.728-.65-1.219-1.452-1.362-1.697-.143-.245-.015-.378.107-.5.11-.11.245-.287.368-.43.122-.144.163-.246.245-.41.082-.164.041-.307-.02-.43-.062-.123-.55-1.322-.753-1.81-.198-.474-.4-.41-.55-.418-.143-.008-.306-.01-.47-.01-.163 0-.428.06-.652.306-.224.246-.857.838-.857 2.043 0 1.205.877 2.37 1 2.534.123.164 1.727 2.638 4.185 3.698.585.252 1.042.402 1.398.515.587.187 1.12.16 1.543.097.47-.07 1.449-.592 1.653-1.163.204-.57.204-1.058.143-1.16-.06-.102-.224-.164-.47-.287z"/>
+    </svg>
+</a>
+
+<main>
+    <section class="hero" id="accueil">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag">TUNISIE · CRÉATION PRINT PREMIUM</span>
+                <h1>Flyers, cartes de visite <span class="orange">et design sur mesure</span></h1>
+                <p class="hero-desc">Agence créative basée en Tunisie, nous concevons des supports graphiques percutants : flyers, cartes de visite, brochures. Un mélange d'audace et d'élégance pour votre marque.</p>
+                <button class="btn-primary" id="exploreBtn">Découvrir nos prestations</button>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-label">Projets livrés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">96%</div>
+                        <div class="stat-label">Clients satisfaits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24h</div>
+                        <div class="stat-label">Réponse devis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="card-float">
+                    <div class="card-float-inner">
+                        <h4>Carte de visite</h4>
+                        <div class="line"></div>
+                        <p>finition mate · touches cuivrées</p>
+                    </div>
+                </div>
+                <div class="card-float-2">
+                    <div class="card-float-inner" style="padding: 16px;">
+                        <h4>Flyer A5</h4>
+                        <div class="line"></div>
+                        <p>design signature</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Notre savoir-faire</h2>
+            <p class="section-sub">Des prestations print haut de gamme pour une identité visuelle forte et professionnelle.</p>
+            <div class="services-grid">
+                <div class="service-card" data-delay="0">
+                    <div class="service-number">01</div>
+                    <h3>Cartes de visite</h3>
+                    <p>Design moderne, papier luxe, finitions sélectives. Une carte qui laisse une empreinte durable.</p>
+                </div>
+                <div class="service-card" data-delay="1">
+                    <div class="service-number">02</div>
+                    <h3>Flyers & dépliants</h3>
+                    <p>Formats A6, A5, carré. Créations percutantes pour vos événements et promotions.</p>
+                </div>
+                <div class="service-card" data-delay="2">
+                    <div class="service-number">03</div>
+                    <h3>Branding & Papeterie</h3>
+                    <p>Logos, en-têtes, packaging. Une identité cohérente qui renforce votre marque.</p>
+                </div>
+                <div class="service-card" data-delay="3">
+                    <div class="service-number">04</div>
+                    <h3>Impression premium</h3>
+                    <p>Offset, numérique, dorure, vernis UV. Qualité professionnelle en Tunisie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="realisations-section" id="realisations">
+        <div class="container">
+            <h2 class="section-title">Dernières réalisations</h2>
+            <p class="section-sub">Des projets récents qui reflètent notre exigence et notre créativité.</p>
+            <div class="realisations-grid">
+                <div class="realisation-item">
+                    <div class="realisation-category">Carte de visite</div>
+                    <h4>Studio Créa Tunis</h4>
+                    <p>Finition mate · Orange texturé</p>
+                    <div class="realisation-divider"></div>
+                </div>
+                <div class="realisation-item">
+                    <div class="realisation-category">Flyer</div>
+                    <h4>Festival de Sousse</h4>
+                    <p>Format A5 · Édition 2025</p>
+                    <div class="realisation-divider"></div>
+                </div>
+                <div class="realisation-item">
+                    <div class="realisation-category">Pack identité</div>
+                    <h4>Startup Innovante</h4>
+                    <p>Logo + Papeterie complète</p>
+                    <div class="realisation-divider"></div>
+                </div>
+                <div class="realisation-item">
+                    <div class="realisation-category">Brochure</div>
+                    <h4>Groupe Hédi</h4>
+                    <p>Papier recyclé · 24 pages</p>
+                    <div class="realisation-divider"></div>
+                </div>
+                <div class="realisation-item">
+                    <div class="realisation-category">Affiche</div>
+                    <h4>Exposition Art</h4>
+                    <p>Format 60x80 · Vernis sélectif</p>
+                    <div class="realisation-divider"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container" id="devis">
+        <div class="cta-section">
+            <div class="cta-inner">
+                <div class="cta-line"></div>
+                <h2>Un projet de flyers ou cartes de visite ?</h2>
+                <p>Contactez-nous, on vous répond sous 24h avec une maquette offerte et un devis transparent.</p>
+                <button class="btn-cta" id="openModalBtn">Demander un devis</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="logo.png" alt="Logo" class="logo-img" onerror="this.src='https://placehold.co/150x50/0a1a2f/e07a15?text=PROD+DESIGN'">
+                </div>
+                <p>Agence créative spécialisée dans le print et l'identité visuelle. Basée à Tunis, nous accompagnons les marques avec élégance et précision.</p>
+            </div>
+            <div class="footer-links-column">
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="#accueil">Accueil</a>
+                    <a href="#services">Services</a>
+                    <a href="#realisations">Réalisations</a>
+                    <a href="#devis">Devis</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Tunis, Lac 2</p>
+                    <p>contact@proddesign.tn</p>
+                    <p>+216 20 961 180</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Suivez-nous</h4>
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Behance</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 PROD DESIGN STUDIO · Tunisie · Création flyers, cartes de visite et identité visuelle</p>
+        </div>
+    </div>
+</footer>
+
+<div class="modal" id="devisModal">
+    <div class="modal-content">
+        <div class="modal-close" id="closeModalBtn">&times;</div>
+        <h3>Demande de devis</h3>
+        <p class="sub">Remplissez le formulaire, réponse sous 24 heures.</p>
+        <form id="devisForm">
+            <div class="form-group">
+                <label>Nom complet</label>
+                <input type="text" placeholder="Votre nom et prénom" required id="fullName">
+            </div>
+            <div class="form-group">
+                <label>Email professionnel</label>
+                <input type="email" placeholder="exemple@domaine.com" required id="emailAddress">
+            </div>
+            <div class="form-group">
+                <label>Type de support</label>
+                <select id="projectType">
+                    <option>Flyers & dépliants</option>
+                    <option>Cartes de visite</option>
+                    <option>Pack identité complet</option>
+                    <option>Autre support print</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Message (optionnel)</label>
+                <textarea rows="3" placeholder="Détails de votre projet..." id="projectMessage"></textarea>
+            </div>
+            <button type="submit" class="modal-btn">Envoyer la demande via WhatsApp</button>
+        </form>
+        <p style="margin-top: 20px; font-size: 0.7rem; color: #9CA3AF; text-align: center;">Sans engagement · Devis personnalisé</p>
+    </div>
+</div>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    
+    function closeMenu() {
+        navLinks.classList.remove('active');
+        menuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function openMenu() {
+        navLinks.classList.add('active');
+        menuToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
+    
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+        });
+    });
+    
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                closeMenu();
+            }
+        });
+    });
+
+    const exploreBtn = document.getElementById('exploreBtn');
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // Service cards animation
+    const serviceCards = document.querySelectorAll('.service-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    serviceCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Realisations items animation
+    const realisationItems = document.querySelectorAll('.realisation-item');
+    realisationItems.forEach((item, index) => {
+        item.style.opacity = '0';
+        setTimeout(() => {
+            item.style.animation = 'fadeUp 0.5s ease forwards';
+            item.style.opacity = '1';
+        }, 100 + index * 80);
+    });
+
+    // Modal logic
+    const modal = document.getElementById('devisModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+
+    function openModal() {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        closeMenu();
+    }
+
+    function closeModalFunc() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModalFunc);
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunc();
+    });
+
+    // Formulaire -> WhatsApp avec message structuré PRO
+    const form = document.getElementById('devisForm');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('emailAddress').value.trim();
+            const projectType = document.getElementById('projectType').value;
+            const message = document.getElementById('projectMessage').value.trim();
+
+            if (!name || !email || !email.includes('@')) {
+                alert('Veuillez renseigner un nom et un email valide.');
+                return;
+            }
+
+            // Construction du message professionnel structuré
+            let waMsg = " *NOUVELLE DEMANDE DE DEVIS - PROD DESIGN* %0A%0A";
+            waMsg += ` *Nom complet* : ${name}%0A`;
+            waMsg += `*Email* : ${email}%0A`;
+            waMsg += `*Type de support* : ${projectType}%0A`;
+            waMsg += `*Date* : ${new Date().toLocaleDateString('fr-FR')}%0A%0A`;
+            if (message) {
+                waMsg += `*Détails du projet* :%0A${message}%0A%0A`;
+            } else {
+                waMsg += `*Détails* : À préciser lors de l'échange.%0A%0A`;
+            }
+            waMsg += `*Action* : Merci de me contacter pour établir un devis personnalisé avec maquette offerte.%0A`;
+            waMsg += `*PROD DESIGN - Création print Tunisie* `;
+
+            const whatsappNumber = "21620961180";
+            const url = `https://wa.me/${whatsappNumber}?text=${waMsg}`;
+            window.open(url, '_blank');
+            
+            alert(`Merci ${name} ! Vous allez être redirigé vers WhatsApp pour envoyer votre demande structurée.`);
+            closeModalFunc();
+            form.reset();
+        });
+    }
+
+    const stats = document.querySelectorAll('.stat-item');
+    stats.forEach((stat, index) => {
+        stat.style.opacity = '0';
+        setTimeout(() => {
+            stat.style.animation = 'fadeUp 0.5s ease forwards';
+            stat.style.opacity = '1';
+        }, 300 + index * 100);
+    });
+</script>
+</body>
+</html>
