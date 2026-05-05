@@ -513,6 +513,9 @@
             border: 1px solid #d4d4d4;
             transition: all 0.3s;
             box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .realisation-item:hover {
@@ -539,6 +542,27 @@
         .realisation-item p {
             font-size: 0.7rem;
             color: #5a6e7c;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .realisation-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #e07a15;
+            text-decoration: none;
+            border: 1px solid rgba(224, 122, 21, 0.3);
+            padding: 6px 12px;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .realisation-link:hover {
+            background: #e07a15;
+            color: white;
+            border-color: #e07a15;
         }
 
         .realisation-divider {
@@ -547,6 +571,57 @@
             background: #e07a15;
             margin: 12px auto 0;
             opacity: 0.5;
+        }
+
+        /* Pagination */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .pagination-btn {
+            background: white;
+            border: 1px solid #d4d4d4;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #0a1a2f;
+        }
+        .pagination-btn.active {
+            background: #e07a15;
+            color: white;
+            border-color: #e07a15;
+        }
+        .pagination-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .pagination-btn:hover:not(:disabled) {
+            background: #e07a15;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .page-number {
+            background: white;
+            border: 1px solid #d4d4d4;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 44px;
+            text-align: center;
+        }
+        .page-number.active-page {
+            background: #e07a15;
+            color: white;
+            border-color: #e07a15;
         }
 
         /* CTA */
@@ -655,7 +730,7 @@
             font-size: 0.7rem;
         }
 
-        /* Modals (Devis + Admin) */
+        /* Modals */
         .modal, .admin-modal {
             display: none;
             position: fixed;
@@ -774,7 +849,7 @@
         }
         .admin-realisation-row input, .admin-realisation-row textarea {
             flex: 1;
-            min-width: 150px;
+            min-width: 130px;
             padding: 10px 12px;
             border-radius: 28px;
             border: 1px solid #ccc;
@@ -899,6 +974,7 @@
             <h2 class="section-title">Dernières réalisations</h2>
             <p class="section-sub">Des projets récents qui reflètent notre exigence et notre créativité.</p>
             <div class="realisations-grid" id="realisationsGrid"></div>
+            <div class="pagination-container" id="paginationControls"></div>
         </div>
     </section>
 
@@ -935,86 +1011,126 @@
     </div>
 </div>
 
-<!-- ADMIN PANEL (modifier / ajouter réalisations) accessible via mot-clé "khalil" -->
+<!-- ADMIN PANEL -->
 <div class="admin-modal" id="adminModal">
     <div class="admin-modal-content">
         <div class="modal-close" id="closeAdminModalBtn">&times;</div>
         <h3>✏️ Panneau d'administration</h3>
-        <p class="admin-subtitle">Modifier ou ajouter des réalisations (catégorie, titre, description).</p>
+        <p class="admin-subtitle">Modifier / ajouter des réalisations (catégorie, titre, description, lien URL).</p>
         <div id="adminRealisationsList"></div>
         <button class="btn-add-realisation" id="addNewAdminRowBtn">+ Ajouter une réalisation</button>
         <div class="admin-actions">
-            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder les modifications</button>
+            <button class="btn-admin-save" id="saveAdminChangesBtn">💾 Sauvegarder</button>
             <button class="btn-admin-cancel" id="cancelAdminBtn">Annuler</button>
         </div>
     </div>
 </div>
 
 <script>
-    // ---------- DONNÉES PAR DÉFAUT DES RÉALISATIONS ----------
+    // ---------- DONNÉES AVEC LIENS + PAGINATION (5 par page) ----------
     const DEFAULT_REALISATIONS = [
-        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé" },
-        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025" },
-        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète" },
-        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages" },
-        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif" }
+        { category: "Carte de visite", title: "Studio Créa Tunis", desc: "Finition mate · Orange texturé", link: "https://www.behance.net/gallery/123456/Studio-Crea" },
+        { category: "Flyer", title: "Festival de Sousse", desc: "Format A5 · Édition 2025", link: "" },
+        { category: "Pack identité", title: "Startup Innovante", desc: "Logo + Papeterie complète", link: "https://www.instagram.com/p/example" },
+        { category: "Brochure", title: "Groupe Hédi", desc: "Papier recyclé · 24 pages", link: "" },
+        { category: "Affiche", title: "Exposition Art", desc: "Format 60x80 · Vernis sélectif", link: "https://www.behance.net/example" },
+        { category: "Flyer", title: "Salon de l'Entreprise", desc: "Design percutant, tirage 1000 ex", link: "" },
+        { category: "Carte visite", title: "Café Littéraire", desc: "Papier kraft + typographie dorée", link: "https://example.com/cafe" }
     ];
 
     let realisationsData = [];
+    let currentPage = 1;
+    const ITEMS_PER_PAGE = 5;
 
-    // Chargement / localStorage
     function loadRealisationsData() {
         const stored = localStorage.getItem("proddesign_realisations");
         if (stored) {
             try {
-                realisationsData = JSON.parse(stored);
-                if (!Array.isArray(realisationsData) || realisationsData.length === 0) realisationsData = [...DEFAULT_REALISATIONS];
+                let parsed = JSON.parse(stored);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    realisationsData = parsed.map(item => ({ ...item, link: item.link || "" }));
+                } else realisationsData = [...DEFAULT_REALISATIONS];
             } catch(e) { realisationsData = [...DEFAULT_REALISATIONS]; }
         } else {
             realisationsData = [...DEFAULT_REALISATIONS];
         }
+        // Migrate old entries missing link
+        realisationsData = realisationsData.map(r => ({ ...r, link: r.link || "" }));
     }
 
     function saveRealisationsToLocal() {
         localStorage.setItem("proddesign_realisations", JSON.stringify(realisationsData));
     }
 
-    // Rendu dynamique des réalisations avec animations
-    function renderRealisations() {
+    function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    // Rendu paginé
+    function renderRealisationsPaginated() {
         const grid = document.getElementById("realisationsGrid");
+        const paginationContainer = document.getElementById("paginationControls");
         if (!grid) return;
+
+        const totalItems = realisationsData.length;
+        const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+        if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+        const pageItems = realisationsData.slice(start, end);
+
         grid.innerHTML = "";
-        realisationsData.forEach((item, idx) => {
-            const card = document.createElement("div");
-            card.className = "realisation-item";
-            card.style.opacity = "0";
-            card.innerHTML = `
-                <div class="realisation-category">${escapeHtml(item.category)}</div>
-                <h4>${escapeHtml(item.title)}</h4>
-                <p>${escapeHtml(item.desc)}</p>
-                <div class="realisation-divider"></div>
-            `;
-            grid.appendChild(card);
-        });
-        // Animation staggered
-        const items = document.querySelectorAll("#realisationsGrid .realisation-item");
-        items.forEach((el, i) => {
-            setTimeout(() => {
-                el.style.animation = "fadeUp 0.5s ease forwards";
-                el.style.opacity = "1";
-            }, i * 80);
+        if (pageItems.length === 0) {
+            grid.innerHTML = "<div style='text-align:center; grid-column:1/-1;'>Aucune réalisation pour le moment.</div>";
+        } else {
+            pageItems.forEach((item) => {
+                const card = document.createElement("div");
+                card.className = "realisation-item";
+                card.style.opacity = "0";
+                let linkHtml = "";
+                if (item.link && item.link.trim() !== "") {
+                    linkHtml = `<a href="${escapeHtml(item.link)}" target="_blank" rel="noopener noreferrer" class="realisation-link">🔗 Voir le projet</a>`;
+                }
+                card.innerHTML = `
+                    <div class="realisation-category">${escapeHtml(item.category)}</div>
+                    <h4>${escapeHtml(item.title)}</h4>
+                    <p>${escapeHtml(item.desc)}</p>
+                    ${linkHtml}
+                    <div class="realisation-divider"></div>
+                `;
+                grid.appendChild(card);
+            });
+            // animation
+            const items = document.querySelectorAll("#realisationsGrid .realisation-item");
+            items.forEach((el, i) => { setTimeout(() => { el.style.animation = "fadeUp 0.5s ease forwards"; el.style.opacity = "1"; }, i * 70); });
+        }
+
+        // Pagination UI
+        if (totalPages <= 1) {
+            paginationContainer.innerHTML = "";
+            return;
+        }
+        let paginationHtml = `<button class="pagination-btn" id="prevPageBtn" ${currentPage === 1 ? 'disabled' : ''}>◀ Précédent</button>`;
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<button class="page-number ${i === currentPage ? 'active-page' : ''}" data-page="${i}">${i}</button>`;
+        }
+        paginationHtml += `<button class="pagination-btn" id="nextPageBtn" ${currentPage === totalPages ? 'disabled' : ''}>Suivant ▶</button>`;
+        paginationContainer.innerHTML = paginationHtml;
+
+        document.getElementById("prevPageBtn")?.addEventListener("click", () => { if (currentPage > 1) { currentPage--; renderRealisationsPaginated(); } });
+        document.getElementById("nextPageBtn")?.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; renderRealisationsPaginated(); } });
+        document.querySelectorAll(".page-number").forEach(btn => {
+            btn.addEventListener("click", (e) => { const page = parseInt(btn.getAttribute("data-page")); if (!isNaN(page) && page !== currentPage) { currentPage = page; renderRealisationsPaginated(); } });
         });
     }
 
-    function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
-
-    // Rafraîchir tout : données, rendu
-    function refreshRealisations() {
-        renderRealisations();
+    function refreshRealisationsAndResetPage() {
+        currentPage = 1;
+        renderRealisationsPaginated();
         saveRealisationsToLocal();
     }
 
-    // ADMIN PANEL : ouverture, construction formulaire
+    // ADMIN PANEL avec champ "link"
     let currentEditData = [];
     const adminModal = document.getElementById("adminModal");
     const adminListContainer = document.getElementById("adminRealisationsList");
@@ -1026,14 +1142,14 @@
             row.className = "admin-realisation-row";
             row.dataset.index = idx;
             row.innerHTML = `
-                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie (ex: Flyer)" style="flex:1;">
-                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="flex:1;">
-                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="flex:1.5;">
+                <input type="text" class="admin-cat" value="${escapeHtml(item.category)}" placeholder="Catégorie" style="min-width:120px;">
+                <input type="text" class="admin-title" value="${escapeHtml(item.title)}" placeholder="Titre" style="min-width:120px;">
+                <input type="text" class="admin-desc" value="${escapeHtml(item.desc)}" placeholder="Description" style="min-width:150px;">
+                <input type="url" class="admin-link" value="${escapeHtml(item.link || '')}" placeholder="Lien URL (ex: https://...)" style="min-width:180px;">
                 <button class="row-remove" data-idx="${idx}">Supprimer</button>
             `;
             adminListContainer.appendChild(row);
         });
-        // ajouter events remove
         document.querySelectorAll(".row-remove").forEach(btn => {
             btn.addEventListener("click", (e) => {
                 const idx = parseInt(btn.getAttribute("data-idx"));
@@ -1046,8 +1162,7 @@
     }
 
     function openAdminPanel() {
-        // copie profonde des données actuelles
-        currentEditData = realisationsData.map(r => ({ ...r }));
+        currentEditData = realisationsData.map(r => ({ ...r, link: r.link || "" }));
         buildAdminForm();
         adminModal.style.display = "flex";
         document.body.style.overflow = "hidden";
@@ -1059,39 +1174,36 @@
     }
 
     function saveAdminChanges() {
-        // récupérer depuis les champs
         const rows = document.querySelectorAll("#adminRealisationsList .admin-realisation-row");
         const newData = [];
         rows.forEach(row => {
             const catInput = row.querySelector(".admin-cat");
             const titleInput = row.querySelector(".admin-title");
             const descInput = row.querySelector(".admin-desc");
+            const linkInput = row.querySelector(".admin-link");
             if (catInput && titleInput && descInput) {
                 let cat = catInput.value.trim();
                 let title = titleInput.value.trim();
                 let desc = descInput.value.trim();
+                let link = linkInput ? linkInput.value.trim() : "";
                 if (title === "") title = "Réalisation";
                 if (cat === "") cat = "Création";
-                newData.push({ category: cat, title: title, desc: desc });
+                newData.push({ category: cat, title: title, desc: desc, link: link });
             }
         });
-        if (newData.length === 0) {
-            alert("Ajoutez au moins une réalisation.");
-            return;
-        }
+        if (newData.length === 0) { alert("Ajoutez au moins une réalisation."); return; }
         realisationsData = newData;
         saveRealisationsToLocal();
-        renderRealisations();
+        refreshRealisationsAndResetPage();
         closeAdminPanel();
     }
 
-    // Ajouter ligne vierge dans admin
     function addEmptyAdminRow() {
-        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description..." });
+        currentEditData.push({ category: "Nouvelle catégorie", title: "Nouveau projet", desc: "Description...", link: "" });
         buildAdminForm();
     }
 
-    // GESTION CLAVIER : taper "khalil"
+    // Mot de passe "khalil"
     let keyBuffer = "";
     function onKeydownHandler(e) {
         const key = e.key;
@@ -1102,28 +1214,23 @@
                 openAdminPanel();
                 keyBuffer = "";
             }
-        } else {
-            if (key === "Escape" && adminModal.style.display === "flex") {
-                closeAdminPanel();
-            }
-        }
+        } else if (key === "Escape" && adminModal.style.display === "flex") closeAdminPanel();
     }
     window.addEventListener("keydown", onKeydownHandler);
 
-    // Initialisation + service cards animation
+    // Initialisation
     document.addEventListener("DOMContentLoaded", () => {
         loadRealisationsData();
-        renderRealisations();
-        // service cards animation
+        renderRealisationsPaginated();
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll(".service-card").forEach(card => observer.observe(card));
-        // stats anim
         document.querySelectorAll(".stat-item").forEach((stat, idx) => { stat.style.opacity = "0"; setTimeout(() => { stat.style.animation = "fadeUp 0.5s ease forwards"; stat.style.opacity = "1"; }, 300 + idx * 100); });
     });
 
-    // Navbar scroll, menu mobile, etc
+    // Navbar, menus
     window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
     const menuToggle = document.getElementById('menuToggle'), navLinks = document.getElementById('navLinks');
     function closeMenu() { navLinks.classList.remove('active'); menuToggle.classList.remove('active'); document.body.style.overflow = ''; }
@@ -1162,7 +1269,6 @@
         });
     }
 
-    // Admin panel controls
     document.getElementById("closeAdminModalBtn")?.addEventListener("click", closeAdminPanel);
     document.getElementById("saveAdminChangesBtn")?.addEventListener("click", saveAdminChanges);
     document.getElementById("cancelAdminBtn")?.addEventListener("click", closeAdminPanel);
